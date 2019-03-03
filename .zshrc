@@ -76,13 +76,13 @@ function scripts () {
   scripts=$(pwd)
   rm -rf $HOME/.tmp
   rm -rf $HOME/.zshrc
-  rm -rf $HOME/.pacman.sh
+  rm -rf $HOME/.apt.sh
   rm -rf $HOME/viper/merging.sh
   rm -rf $HOME/viper/mka.sh
   rm -rf $HOME/kk/merging.sh
   rm -rf $HOME/kk/mka.sh
   cd $HOME && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.zshrc
-  cd $HOME && rm -rf .pacman.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.pacman.sh && chmod +x .pacman.sh
+  cd $HOME && rm -rf .apt.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.apt.sh && chmod +x .apt.sh
   cd $HOME/viper && rm -rf merging.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/merging.sh && chmod +x merging.sh
   cd $HOME/viper && rm -rf mka.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/mka.sh && chmod +x mka.sh
   cd $HOME/kk && rm -rf merging.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/merging.sh && chmod +x merging.sh
