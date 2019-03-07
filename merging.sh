@@ -136,6 +136,14 @@ function lineage() {
   git pull --rebase https://github.com/LineageOS/android_packages_apps_LineageParts -t $branch_los
   git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_CustomParts HEAD:refs/heads/$branch_kk && cd $tmp
 
+  git clone ssh://git@github.com/mamutal91/packages_apps_Launcher3 -b $branch_kk && cd packages_apps_Launcher3
+  git pull --rebase https://github.com/LineageOS/android_packages_apps_Trebuchet -t $branch_los
+  git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Launcher3 HEAD:refs/heads/$branch_kk && cd $tmp
+
+  git clone ssh://git@github.com/mamutal91/packages_apps_Settings -b $branch_kk && cd packages_apps_Settings
+  git pull --rebase https://github.com/LineageOS/android_packages_apps_Settings -t $branch_los
+  git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Settings HEAD:refs/heads/$branch_kk && cd $tmp
+
   git clone ssh://git@github.com/mamutal91/packages_apps_Updater -b $branch_kk && cd packages_apps_Updater
   git pull --rebase https://github.com/LineageOS/android_packages_apps_Updater -t $branch_los
   git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Updater HEAD:refs/heads/$branch_kk && cd $tmp
@@ -151,14 +159,6 @@ function lineage() {
   git clone ssh://git@github.com/mamutal91/frameworks_base -b $branch_kk && cd frameworks_base
   git pull --rebase https://github.com/LineageOS/android_frameworks_base -t $branch_los
   git rebase && echo && git push ssh://git@github.com/mamutal91/frameworks_base HEAD:refs/heads/$branch_kk && cd $tmp
-
-  git clone ssh://git@github.com/mamutal91/packages_apps_Settings -b $branch_kk && cd packages_apps_Settings
-  git pull --rebase https://github.com/LineageOS/android_packages_apps_Settings -t $branch_los
-  git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Settings HEAD:refs/heads/$branch_kk && cd $tmp
-
-  git clone ssh://git@github.com/mamutal91/packages_apps_Launcher3 -b $branch_kk && cd packages_apps_Launcher3
-  git pull --rebase https://github.com/LineageOS/android_packages_apps_Trebuchet -t $branch_los
-  git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Launcher3 HEAD:refs/heads/$branch_kk && cd $tmp
 }
 
 function mamutal91() {
