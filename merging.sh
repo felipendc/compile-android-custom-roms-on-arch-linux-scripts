@@ -232,3 +232,5 @@ else
   echo -e "\n\n\e[33m Starting !!! \n\e[m"
   $action
 fi
+
+rm -rf $tmp
