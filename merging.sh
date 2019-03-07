@@ -7,7 +7,7 @@ clear
 
 date=$(date +"%Y%m%d-%H%M")
 tmp=/home/mamutal91/merging_tmp_$date/
-rm -rf $tmp && mkdir -p $tmp
+mkdir -p $tmp
 
 function ask_branch() {
   echo -e "\e[31m\e[1m Which branch do you want to work on?\e[m"
