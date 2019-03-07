@@ -1,6 +1,8 @@
 #!/bin/bash
 # github.com/mamutal91
 
+# rm -rf merging.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/merging.sh && chmod +x merging.sh && ./merging.sh
+
 clear
 
 tmp=/home/mamutal91/merging_tmp/
