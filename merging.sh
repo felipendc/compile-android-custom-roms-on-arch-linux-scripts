@@ -32,7 +32,7 @@ function ask_action() {
   echo -e "\e[36m 6. Remove BACKUP branch\e[m"
   read action
   case "$action" in
-    1)  action="mamutal91" ;;
+    1|"")  action="mamutal91" ;;
     2)  action="lineage" ;;
     3)  action="tree" ;;
     4)  action="aosp" ;;
