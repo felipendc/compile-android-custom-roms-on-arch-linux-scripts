@@ -159,6 +159,10 @@ function lineage() {
   git clone ssh://git@github.com/mamutal91/frameworks_base -b $branch_kk && cd frameworks_base
   git pull --rebase https://github.com/LineageOS/android_frameworks_base -t $branch_los
   git rebase && echo && git push ssh://git@github.com/mamutal91/frameworks_base HEAD:refs/heads/$branch_kk && cd $tmp
+
+  git clone ssh://git@github.com/mamutal91/prebuilts_clang_host_linux-x86 -b $branch_kk && cd prebuilts_clang_host_linux-x86
+  git pull --rebase https://github.com/AOSiP/platform_prebuilts_clang_host_linux-x86 -t pie
+  git rebase && echo && git push ssh://git@github.com/mamutal91/prebuilts_clang_host_linux-x86 HEAD:refs/heads/$branch_kk && cd $tmp
 }
 
 function mamutal91() {
