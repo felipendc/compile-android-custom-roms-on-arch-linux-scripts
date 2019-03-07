@@ -53,6 +53,7 @@ readonly repos=(
   kraken-sdk
   packages_apps_Bluetooth
   packages_apps_CustomParts
+  packages_apps_DocumentsUI
   packages_apps_Launcher3
   packages_apps_Settings
   packages_apps_Updater
@@ -121,6 +122,11 @@ function lineage() {
   echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_CustomParts HEAD:refs/heads/$branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
+  git clone ssh://git@github.com/mamutal91/packages_apps_DocumentsUI -b $branch_kk && cd packages_apps_DocumentsUI
+  git pull --rebase https://github.com/LineageOS/android_packages_apps_DocumentsUI -t $branch_los
+  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_DocumentsUI HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
+
   git clone ssh://git@github.com/mamutal91/packages_apps_Launcher3 -b $branch_kk && cd packages_apps_Launcher3
   git pull --rebase https://github.com/LineageOS/android_packages_apps_Trebuchet -t $branch_los
   echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Launcher3 HEAD:refs/heads/$branch_kk && cd $tmp
@@ -177,31 +183,43 @@ function aosp() {
   cd build
   git pull https://android.googlesource.com/platform/build -t $tag_aosp
   echo && git push ssh://git@github.com/mamutal91/build HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/build_soong -b $branch_kk
   cd build_soong
   git pull https://android.googlesource.com/platform/build/soong -t $tag_aosp
   echo && git push ssh://git@github.com/mamutal91/build_soong HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_Bluetooth -b $branch_kk
   cd packages_apps_Bluetooth
   git pull https://android.googlesource.com/platform/packages/apps/Bluetooth -t $tag_aosp
   echo && git push ssh://git@github.com/mamutal91/packages_apps_Bluetooth HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
 
-  git clone ssh://git@github.com/mamutal91/frameworks_base -b $branch_kk
-  cd frameworks_base
-  git pull https://android.googlesource.com/platform/frameworks/base -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/frameworks_base HEAD:refs/heads/$branch_kk && cd $tmp
-
-  git clone ssh://git@github.com/mamutal91/packages_apps_Settings -b $branch_kk
-  cd packages_apps_Settings
-  git pull https://android.googlesource.com/platform/packages/apps/Settings -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/packages_apps_Settings HEAD:refs/heads/$branch_kk && cd $tmp
+  git clone ssh://git@github.com/mamutal91/packages_apps_DocumentsUI -b $branch_kk
+  cd packages_apps_DocumentsUI
+  git pull https://android.googlesource.com/platform/packages/apps/DocumentsUI -t $tag_aosp
+  echo && git push ssh://git@github.com/mamutal91/packages_apps_DocumentsUI HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_Launcher3 -b $branch_kk
   cd packages_apps_Launcher3
   git pull https://android.googlesource.com/platform/packages/apps/Launcher3 -t $tag_aosp
   echo && git push ssh://git@github.com/mamutal91/packages_apps_Launcher3 HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
+
+  git clone ssh://git@github.com/mamutal91/packages_apps_Settings -b $branch_kk
+  cd packages_apps_Settings
+  git pull https://android.googlesource.com/platform/packages/apps/Settings -t $tag_aosp
+  echo && git push ssh://git@github.com/mamutal91/packages_apps_Settings HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
+
+  git clone ssh://git@github.com/mamutal91/frameworks_base -b $branch_kk
+  cd frameworks_base
+  git pull https://android.googlesource.com/platform/frameworks/base -t $tag_aosp
+  echo && git push ssh://git@github.com/mamutal91/frameworks_base HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
 }
 
 function create_backup() {
