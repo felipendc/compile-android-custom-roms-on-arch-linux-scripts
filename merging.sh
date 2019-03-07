@@ -144,7 +144,7 @@ function lineage() {
 #  git clone ssh://git@github.com/mamutal91/vendor_aosp -b $branch_kk && cd vendor_aosp
 #  git pull --rebase https://github.com/LineageOS/android_vendor_lineage -t $branch_los
 #  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/vendor_aosp HEAD:refs/heads/$branch_kk && cd $tmp
-echo -e "\n\e[33m------------------------------------------------------\e[m"
+#echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/frameworks_base -b $branch_kk && cd frameworks_base
   git pull --rebase https://github.com/LineageOS/android_frameworks_base -t $branch_los
