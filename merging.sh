@@ -124,9 +124,9 @@ function lineage() {
   git pull --rebase https://github.com/LineageOS/android_device_qcom_sepolicy-legacy -t $branch_los
   git rebase && echo && git push ssh://git@github.com/mamutal91/device_qcom_sepolicy-legacy HEAD:refs/heads/$branch_kk && cd $tmp
 
-  git clone ssh://git@github.com/mamutal91/kraken-sdk -b $branch_kk && cd kraken-sdk
-  git pull --rebase https://github.com/LineageOS/android_lineage-sdk -t $branch_los
-  git rebase && echo && git push ssh://git@github.com/mamutal91/kraken-sdk HEAD:refs/heads/$branch_kk && cd $tmp
+#  git clone ssh://git@github.com/mamutal91/kraken-sdk -b $branch_kk && cd kraken-sdk
+#  git pull --rebase https://github.com/LineageOS/android_lineage-sdk -t $branch_los
+#  git rebase && echo && git push ssh://git@github.com/mamutal91/kraken-sdk HEAD:refs/heads/$branch_kk && cd $tmp
 
   git clone ssh://git@github.com/mamutal91/packages_apps_Bluetooth -b $branch_kk && cd packages_apps_Bluetooth
   git pull --rebase https://github.com/LineageOS/android_packages_apps_Bluetooth -t $branch_los
@@ -144,9 +144,9 @@ function lineage() {
   git pull --rebase https://github.com/LineageOS/android_packages_overlays_Lineage -t $branch_los
   git rebase && echo && git push ssh://git@github.com/mamutal91/packages_overlays_Custom HEAD:refs/heads/$branch_kk && cd $tmp
 
-  git clone ssh://git@github.com/mamutal91/vendor_aosp -b $branch_kk && cd vendor_aosp
-  git pull --rebase https://github.com/LineageOS/android_vendor_lineage -t $branch_los
-  git rebase && echo && git push ssh://git@github.com/mamutal91/vendor_aosp HEAD:refs/heads/$branch_kk && cd $tmp
+#  git clone ssh://git@github.com/mamutal91/vendor_aosp -b $branch_kk && cd vendor_aosp
+#  git pull --rebase https://github.com/LineageOS/android_vendor_lineage -t $branch_los
+#  git rebase && echo && git push ssh://git@github.com/mamutal91/vendor_aosp HEAD:refs/heads/$branch_kk && cd $tmp
 
   git clone ssh://git@github.com/mamutal91/frameworks_base -b $branch_kk && cd frameworks_base
   git pull --rebase https://github.com/LineageOS/android_frameworks_base -t $branch_los
@@ -211,4 +211,3 @@ else
   echo -e "\n\n\e[33m Starting !!! \n\e[m"
   $action
 fi
-
