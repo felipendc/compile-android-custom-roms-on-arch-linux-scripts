@@ -23,10 +23,10 @@ function ask_branch() {
 
 function ask_action() {
   echo -e "\n\e[31m\e[1m What do you want to do\e[m"
-  echo -e "\e[33m 1. Sync repositories \e[4m@KrakenProject\e[m\e[33m with \e[4m@mamutal91\e[m"
+  echo -e "\n\e[33m 1. Sync repositories \e[4m@KrakenProject\e[m\e[33m with \e[4m@mamutal91\e[m"
   echo -e "\e[36m 2. Pull rebase Lineage\e[m"
   echo -e "\e[32m 3. Update tree (beryllium/whyred)\e[m"
-  echo -e "\n\e[34m 4. Merge tag AOSP\e[m"
+  echo -e "\e[34m 4. Merge tag AOSP\e[m"
   echo -e "\e[34m 5. Create BACKUP branch\e[m"
   echo -e "\e[36m 6. Remove BACKUP branch\e[m"
   read action
