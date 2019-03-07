@@ -6,7 +6,7 @@
 clear
 
 date=$(date +"%Y%m%d-%H%M")
-tmp=/home/mamutal91/merging_tmp_$date/
+tmp=/home/mamutal91/tmp/merging_$date/
 mkdir -p $tmp
 
 function ask_branch() {
