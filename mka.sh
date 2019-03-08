@@ -136,6 +136,15 @@ function clone_tree_viper() {
     2|n|"") ;;
   esac
 
+  echo -e "\n\e[31m\e[1m ## Clone CLANG?\e[m"
+  echo -e "\n\e[33m 1. Yes\e[m"
+  echo -e "\e[36m 2. No\e[m"
+  read clone_clang
+  case "$clone_clang" in
+    1|y) clang=yes ;;
+    2|n|"") ;;
+  esac
+
   rm -rf device/xiaomi/beryllium
   git clone ssh://git@github.com/Viper-Devices/android_device_xiaomi_beryllium -b $branch_kk device/xiaomi/beryllium
 
@@ -153,6 +162,11 @@ function clone_tree_viper() {
     rm -rf vendor/xiaomi/{aries,armani,cancro,capricorn,chiron,dipper,equuleus,ferrari,gemini,hydrogen,ido,jasmine_sprout,jason,kenzo,land,libra,lithium,mido,msm*,natrium,polaris,sagit,santoni,scorpio,tissot,wayne*,whyred}
   }
 
+  function clang() {
+    rm -rf prebuilts/clang/host/linux-x86
+    git clone ssh://git@github.com/KrakenProject/prebuilts_clang_host_linux-x86 -b $branch_kk prebuilts/clang/host/linux-x86
+  }
+
   if [ -z $kernels ];then
     echo -e ""
   else
@@ -163,6 +177,12 @@ function clone_tree_viper() {
     echo -e ""
   else
     vendors
+  fi
+
+  if [ -z $clang ];then
+    echo -e ""
+  else
+    clang
   fi
 }
 
