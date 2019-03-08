@@ -61,7 +61,7 @@ readonly repos=(
   packages_overlays_Custom
   vendor_aosp
   frameworks_base
-  prebuilts_clang_host_linux-x86
+#  prebuilts_clang_host_linux-x86
 )
 
 readonly repostree=(
@@ -158,10 +158,10 @@ function lineage() {
   echo && git rebase && echo && git push ssh://git@github.com/mamutal91/frameworks_base HEAD:refs/heads/$branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
-  git clone ssh://git@github.com/mamutal91/prebuilts_clang_host_linux-x86 -b $branch_kk && cd prebuilts_clang_host_linux-x86
-  git pull --rebase https://github.com/AOSiP/platform_prebuilts_clang_host_linux-x86 -t pie
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/prebuilts_clang_host_linux-x86 HEAD:refs/heads/$branch_kk && cd $tmp
-  echo -e "\n\e[33m------------------------------------------------------\e[m"
+#  git clone ssh://git@github.com/mamutal91/prebuilts_clang_host_linux-x86 -b $branch_kk && cd prebuilts_clang_host_linux-x86
+#  git pull --rebase https://github.com/AOSiP/platform_prebuilts_clang_host_linux-x86 -t pie
+#  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/prebuilts_clang_host_linux-x86 HEAD:refs/heads/$branch_kk && cd $tmp
+#  echo -e "\n\e[33m------------------------------------------------------\e[m"
 }
 
 function tree() {
