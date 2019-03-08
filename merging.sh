@@ -27,17 +27,19 @@ function ask_action() {
   echo -e "\n\e[33m 1. Sync repositories \e[4m@KrakenProject\e[m\e[33m with \e[4m@mamutal91\e[m"
   echo -e "\e[36m 2. Pull rebase Lineage\e[m"
   echo -e "\e[32m 3. Update tree (beryllium/whyred)\e[m"
-  echo -e "\e[34m 4. Merge tag AOSP\e[m"
-  echo -e "\e[34m 5. Create BACKUP branch\e[m"
-  echo -e "\e[36m 6. Remove BACKUP branch\e[m"
+  echo -e "\e[33m 4. Clone tree (beryllium/whyred)\e[m"
+  echo -e "\e[34m 5. Merge tag AOSP\e[m"
+  echo -e "\e[34m 6. Create BACKUP branch\e[m"
+  echo -e "\e[36m 7. Remove BACKUP branch\e[m"
   read action
   case "$action" in
     1|"")  action="mamutal91" ;;
     2)  action="lineage" ;;
     3)  action="tree" ;;
-    4)  action="aosp" ;;
-    5)  action="create_backup" ;;
-    6)  action="remove_backup" ;;
+    4)  action="clone_tree" ;;
+    5)  action="aosp" ;;
+    6)  action="create_backup" ;;
+    7)  action="remove_backup" ;;
   esac
   echo -e "\n\e[1m\e[3m Ok! Selected: \e[31m\e[1m$action\e[m"
 }
@@ -173,6 +175,59 @@ function tree() {
     echo && git rebase && git push ssh://git@github.com/KrakenDevices/$repo HEAD:refs/heads/$branch_kk --force
     echo -e "\n\e[33m------------------------------------------------------\e[m"
   done
+}
+
+function clone_tree() {
+  echo -e "\n\e[31m\e[1m Clone KERNELS?\e[m"
+  echo -e "\n\e[33m 1. Yes\e[m"
+  echo -e "\e[36m 2. No\e[m"
+  read clone_kernels
+  case "$clone_kernels" in
+    1|y) kernels=yes ;;
+    2|n|"") ;;
+  esac
+
+  echo -e "\n\e[31m\e[1m Clone VENDORS?\e[m"
+  echo -e "\n\e[33m 1. Yes\e[m"
+  echo -e "\e[36m 2. No\e[m"
+  read clone_vendors
+  case "$clone_vendors" in
+    1|y) vendors=yes ;;
+    2|n|"") ;;
+  esac
+
+  rm -rf device/xiaomi/beryllium
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_beryllium -b pie device/xiaomi/beryllium
+
+  rm -rf device/xiaomi/sdm845-common
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_sdm845-common -b pie device/xiaomi/sdm845-common
+
+  rm -rf device/xiaomi/whyred
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_whyred -b pie device/xiaomi/whyred
+
+  function kernels() {
+    rm -rf kernel/xiaomi/sdm845
+    git clone https://github.com/akhilnarang/beryllium -b pie kernel/xiaomi/sdm845
+    rm -rf kernel/xiaomi/sdm660
+    git clone https://github.com/akhilnarang/whyred -b pie kernel/xiaomi/sdm660
+  }
+
+  function vendors() {
+    rm -rf vendor/xiaomi
+    git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi -b pie vendor/xiaomi
+  }
+
+  if [ -z $kernels ];then
+    echo -e "\n\e[33m No cloneed kernels!!!\e[m"
+  else
+    kernels
+  fi
+
+  if [ -z $vendors ];then
+    echo -e "\n\e[33m No cloned vendors!!!\e[m"
+  else
+    vendors
+  fi
 }
 
 function aosp() {
