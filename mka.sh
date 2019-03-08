@@ -11,32 +11,44 @@ export KBUILD_BUILD_HOST=KrakenBox
 export SELINUX_IGNORE_NEVERALLOWS=true
 export KRAKEN_BUILD_TYPE=OFFICIAL
 
-device=${1}
-
-function ask() {
-  echo
-  echo -e "\n\e[31m\e[1m What do you want to do?\e[m"
-  echo -e "\n\e[33m 1. ROM [enter]\e[m"
-  echo -e "\e[32m 2. Settings\e[m"
+function ask_device() {
+  echo -e "\n\e[31m\e[1m Which device do you want to work?\e[m"
+  echo -e "\n\e[33m 1. beryllium [enter]\e[m"
+  echo -e "\e[32m 2. whyred\e[m"
   echo -e "\e[36m X. Anything\e[m"
   read answer
   case "$answer" in
-    1|"") b=bacon ;;
-    2) b=Settings ;;
-    3) b=LineageParts ;;
-    x|n|anything|Anything) ;;
+    1|b|"") device=beryllium ;;
+    2|w) device=whyred ;;
+    x|n|a) ;;
     *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
   esac
-  echo
 }
 
-ask
+function ask_rom() {
+  echo -e "\n\e[31m\e[1m What do you want to do?\e[m"
+  echo -e "\n\e[33m 1. KrakenProject [enter]\e[m"
+  echo -e "\e[32m 2. ViperOS\e[m"
+  echo -e "\e[36m X. Anything\e[m"
+  read rom
+  case "$rom" in
+    1|"")
+      rom=bacon
+      lunch=aosp
+      folder=Kraken
+    ;;
+    2)
+      rom=poison
+      lunch=viper
+      folder=Viper
+    ;;
+    x|n|a) ;;
+    *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
+  esac
+}
 
-if [ -z $device ];then
-  device=beryllium
-else
-  echo
-fi
+ask_device
+ask_rom
 
 echo -e "\n\e[31m\e[1mBuild?\e[m"
 echo -e "\n\e[33m 1. Compile Dirty [enter]\e[m"
@@ -46,36 +58,34 @@ echo -e "\e[34m 4. Repo sync && Clean and Clobber\e[m"
 read answer
 case "$answer" in
   1|"")
+  compile=yes
   ;;
   2)
-    echo "Cleaning builds..."
+    echo -e "\e[34m Cleaning builds...\e[m"
     make clobber && make clean
   ;;
   3)
-    echo "Syncing source..."
+    echo -e "\e[34m Syncing source...\e[m"
     repo sync -c -j32 --force-sync
   ;;
   4)
-    echo "Cleaning builds..."
+    echo -e "\e[34m Cleaning builds...\e[m"
     make clobber && make clean
-    echo "Syncing source..."
+    echo -e "\e[34m Syncing source...\e[m"
     repo sync -c -j32 --force-sync
   ;;
-  *)
-    echo "Invalid answer..."
-  ;;
+  *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
 esac
-echo
 
 function build() {
   . build/envsetup.sh
-  lunch aosp_$device-userdebug
+  lunch $lunch_$device-userdebug
   make -j32 $b 2>&1 | tee log.txt
-  sudo rm -rf /var/www/krakenproject.club/building/Kraken*
-  cp -rf out/target/product/*/Kraken_*.* /var/www/krakenproject.club/building/
+  sudo rm -rf /var/www/krakenproject.club/building/$folder/*
+  cp -rf out/target/product/*/$folder_*.* /var/www/krakenproject.club/building/$folder/
 }
 
-if [ -z $b ];then
+if [ -z $compile ];then
   echo -e "End!"
 else
   build
