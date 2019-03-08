@@ -3,7 +3,7 @@
 
 clear
 
-prebuilts/misc/linux-x86/ccache/ccache -M 50G
+prebuilts/misc/linux-x86/ccache/ccache -M 100G
 
 export USE_CCACHE=1
 export KBUILD_BUILD_USER=mamutal91
