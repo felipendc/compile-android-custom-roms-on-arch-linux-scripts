@@ -7,9 +7,10 @@ prebuilts/misc/linux-x86/ccache/ccache -M 100G
 
 export USE_CCACHE=1
 export KBUILD_BUILD_USER=mamutal91
-export KBUILD_BUILD_HOST=KrakenBox
+export KBUILD_BUILD_HOST=MamutBox
 export SELINUX_IGNORE_NEVERALLOWS=true
 export KRAKEN_BUILD_TYPE=OFFICIAL
+export VIPER_BUILD_TYPE=OFFICIAL
 
 function ask_device() {
   echo -e "\n\e[31m\e[1m ## Which device do you want to work?\e[m"
