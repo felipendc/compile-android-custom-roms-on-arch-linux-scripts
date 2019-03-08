@@ -13,58 +13,19 @@ export KRAKEN_BUILD_TYPE=OFFICIAL
 
 device=${1}
 
-function clone_tree() {
-    rm -rf device/xiaomi/whyred
-    git clone ssh://git@github.com/KrakenDevices/device_xiaomi_whyred.git -b android-9.0 device/xiaomi/whyred
-    rm -rf device/xiaomi/beryllium
-    git clone ssh://git@github.com/KrakenDevices/device_xiaomi_beryllium.git -b android-9.0 device/xiaomi/beryllium
-    rm -rf device/xiaomi/sdm845-common
-    git clone ssh://git@github.com/KrakenDevices/device_xiaomi_sdm845-common.git -b android-9.0 device/xiaomi/sdm845-common
-
-    rm -rf kernel/xiaomi/sdm845
-    git clone https://github.com/akhilnarang/beryllium.git -b pie kernel/xiaomi/sdm845
-    rm -rf kernel/xiaomi/sdm660
-    git clone https://github.com/akhilnarang/whyred.git -b pie kernel/xiaomi/sdm660
-    rm -rf vendor/MiuiCamera
-    git clone https://github.com/PixelExperience-Devices/vendor_MiuiCamera.git -b pie-whyred vendor/MiuiCamera
-    rm -rf vendor/xiaomi
-    git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi.git -b pie vendor/xiaomi
-}
-
 function ask() {
   echo
-  echo -e "What do you want to do?"
-  echo -e "----------------------"
-  echo
-  echo -e "     1. ROM [enter]"
-  echo -e "     2. Settings"
-  echo
-  echo -e "     --------------------"
-  echo -e "     T. Clone tree beryllium"
-  echo -e "     X. Anything"
-  echo
-  echo -n "Answer: "
+  echo -e "\n\e[31m\e[1m What do you want to do?\e[m"
+  echo -e "\n\e[33m 1. ROM [enter]\e[m"
+  echo -e "\e[32m 2. Settings\e[m"
+  echo -e "\e[36m X. Anything\e[m"
   read answer
   case "$answer" in
-    1|"")
-      b=bacon
-    ;;
-    2)
-      b=Settings
-    ;;
-    3)
-      b=LineageParts
-    ;;
-    t|T|tree)
-      echo "Cloning tree..."
-      clone_tree
-      b=bacon
-    ;;
-    x|n|anything|Anything)
-    ;;
-    *)
-      echo "Invalid answer..."
-    ;;
+    1|"") b=bacon ;;
+    2) b=Settings ;;
+    3) b=LineageParts ;;
+    x|n|anything|Anything) ;;
+    *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
   esac
   echo
 }
@@ -77,35 +38,26 @@ else
   echo
 fi
 
-echo
-echo -e "Build?"
-echo -e "-----------------------------"
-echo
-echo -e "     1. Compile Dirty [enter]"
-echo -e "     2. Clean and Clobber"
-echo -e "     3. Repo sync"
-echo -e "     4. Repo sync && Clean and Clobber"
-echo
-echo -n "Answer: "
+echo -e "\n\e[31m\e[1mBuild?\e[m"
+echo -e "\n\e[33m 1. Compile Dirty [enter]\e[m"
+echo -e "\e[36m 2. Clean and Clobber\e[m"
+echo -e "\e[32m 3. Repo sync\e[m"
+echo -e "\e[34m 4. Repo sync && Clean and Clobber\e[m"
 read answer
 case "$answer" in
   1|"")
   ;;
   2)
-    echo
     echo "Cleaning builds..."
     make clobber && make clean
   ;;
   3)
-    echo
     echo "Syncing source..."
     repo sync -c -j32 --force-sync
   ;;
   4)
-    echo
     echo "Cleaning builds..."
     make clobber && make clean
-    echo
     echo "Syncing source..."
     repo sync -c -j32 --force-sync
   ;;
@@ -128,4 +80,3 @@ if [ -z $b ];then
 else
   build
 fi
-
