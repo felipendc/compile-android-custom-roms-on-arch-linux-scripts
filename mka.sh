@@ -137,7 +137,7 @@ function clone_tree_viper() {
   function vendors() {
     rm -rf vendor/xiaomi
     git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi -b pie vendor/xiaomi
-    rm -rf vendor/xiaomi/{aries,armani,cancro,capricorn,chiron,dipper,equuleus,ferrari,gemini,hydrogen,ido,jasmine_sprout,jason,kenzo,land,libra,lithium,mido,msm*,natrium,polaris,sagit,santoni,scorpio,tissot,wayne*}
+    rm -rf vendor/xiaomi/{aries,armani,cancro,capricorn,chiron,dipper,equuleus,ferrari,gemini,hydrogen,ido,jasmine_sprout,jason,kenzo,land,libra,lithium,mido,msm*,natrium,polaris,sagit,santoni,scorpio,tissot,wayne*,whyred}
   }
 
   if [ -z $kernels ];then
