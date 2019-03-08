@@ -25,6 +25,19 @@ function ask_device() {
   esac
 }
 
+function ask_branch() {
+  echo -e "\e[31m\e[1m Which branch do you want to work on?\e[m"
+  echo -e "\n\e[32m 1. ten [enter]\e[m"
+  echo -e "\e[34m 2. pie\e[m"
+  read branch
+  case "$branch" in
+    1|"") branch_kk="ten" ;;
+    2) branch_kk="pie" ;;
+    *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
+  esac
+}
+
+
 function ask_rom() {
   echo -e "\n\e[31m\e[1m What do you want to do?\e[m"
   echo -e "\n\e[33m 1. KrakenProject [enter]\e[m"
@@ -70,24 +83,24 @@ function clone_tree_kraken() {
   esac
 
   rm -rf device/xiaomi/beryllium
-  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_beryllium -b pie device/xiaomi/beryllium
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_beryllium -b $branch_kk device/xiaomi/beryllium
 
   rm -rf device/xiaomi/sdm845-common
-  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_sdm845-common -b pie device/xiaomi/sdm845-common
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_sdm845-common -b $branch_kk device/xiaomi/sdm845-common
 
   rm -rf device/xiaomi/whyred
-  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_whyred -b pie device/xiaomi/whyred
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_whyred -b $branch_kk device/xiaomi/whyred
 
   function kernels() {
     rm -rf kernel/xiaomi/sdm845
-    git clone https://github.com/akhilnarang/beryllium -b pie kernel/xiaomi/sdm845
+    git clone https://github.com/akhilnarang/beryllium -b $branch_kk kernel/xiaomi/sdm845
     rm -rf kernel/xiaomi/sdm660
-    git clone https://github.com/akhilnarang/whyred -b pie kernel/xiaomi/sdm660
+    git clone https://github.com/akhilnarang/whyred -b $branch_kk kernel/xiaomi/sdm660
   }
 
   function vendors() {
     rm -rf vendor/xiaomi
-    git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi -b pie vendor/xiaomi
+    git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi -b $branch_kk vendor/xiaomi
     rm -rf vendor/xiaomi/{aries,armani,cancro,capricorn,chiron,dipper,equuleus,ferrari,gemini,hydrogen,ido,jasmine_sprout,jason,kenzo,land,libra,lithium,mido,msm*,natrium,polaris,sagit,santoni,scorpio,tissot,wayne*}
   }
 
@@ -124,19 +137,19 @@ function clone_tree_viper() {
   esac
 
   rm -rf device/xiaomi/beryllium
-  git clone ssh://git@github.com/Viper-Devices/android_device_xiaomi_beryllium -b pie device/xiaomi/beryllium
+  git clone ssh://git@github.com/Viper-Devices/android_device_xiaomi_beryllium -b $branch_kk device/xiaomi/beryllium
 
   rm -rf device/xiaomi/sdm845-common
-  git clone ssh://git@github.com/Viper-Devices/android_device_xiaomi_sdm845-common -b pie device/xiaomi/sdm845-common
+  git clone ssh://git@github.com/Viper-Devices/android_device_xiaomi_sdm845-common -b $branch_kk device/xiaomi/sdm845-common
 
   function kernels() {
     rm -rf kernel/xiaomi/sdm845
-    git clone https://github.com/akhilnarang/beryllium -b pie kernel/xiaomi/sdm845
+    git clone https://github.com/akhilnarang/beryllium -b $branch_kk kernel/xiaomi/sdm845
   }
 
   function vendors() {
     rm -rf vendor/xiaomi
-    git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi -b pie vendor/xiaomi
+    git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi -b $branch_kk vendor/xiaomi
     rm -rf vendor/xiaomi/{aries,armani,cancro,capricorn,chiron,dipper,equuleus,ferrari,gemini,hydrogen,ido,jasmine_sprout,jason,kenzo,land,libra,lithium,mido,msm*,natrium,polaris,sagit,santoni,scorpio,tissot,wayne*,whyred}
   }
 
