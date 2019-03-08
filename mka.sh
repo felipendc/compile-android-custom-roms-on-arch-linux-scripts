@@ -50,11 +50,131 @@ function ask_rom() {
 ask_device
 ask_rom
 
+function clone_tree_kraken() {
+  echo -e "\n\e[31m\e[1m Clone KERNELS?\e[m"
+  echo -e "\n\e[33m 1. Yes\e[m"
+  echo -e "\e[36m 2. No\e[m"
+  read clone_kernels
+  case "$clone_kernels" in
+    1|y) kernels=yes ;;
+    2|n|"") ;;
+  esac
+
+  echo -e "\n\e[31m\e[1m Clone VENDORS?\e[m"
+  echo -e "\n\e[33m 1. Yes\e[m"
+  echo -e "\e[36m 2. No\e[m"
+  read clone_vendors
+  case "$clone_vendors" in
+    1|y) vendors=yes ;;
+    2|n|"") ;;
+  esac
+
+  rm -rf device/xiaomi/beryllium
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_beryllium -b pie device/xiaomi/beryllium
+
+  rm -rf device/xiaomi/sdm845-common
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_sdm845-common -b pie device/xiaomi/sdm845-common
+
+  rm -rf device/xiaomi/whyred
+  git clone ssh://git@github.com/KrakenDevices/device_xiaomi_whyred -b pie device/xiaomi/whyred
+
+  function kernels() {
+    rm -rf kernel/xiaomi/sdm845
+    git clone https://github.com/akhilnarang/beryllium -b pie kernel/xiaomi/sdm845
+    rm -rf kernel/xiaomi/sdm660
+    git clone https://github.com/akhilnarang/whyred -b pie kernel/xiaomi/sdm660
+  }
+
+  function vendors() {
+    rm -rf vendor/xiaomi
+    git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi -b pie vendor/xiaomi
+    rm -rf vendor/xiaomi/{aries,armani,cancro,capricorn,chiron,dipper,equuleus,ferrari,gemini,hydrogen,ido,jasmine_sprout,jason,kenzo,land,libra,lithium,mido,msm*,natrium,polaris,sagit,santoni,scorpio,tissot,wayne*}
+  }
+
+  if [ -z $kernels ];then
+    echo -e ""
+  else
+    kernels
+  fi
+
+  if [ -z $vendors ];then
+    echo -e ""
+  else
+    vendors
+  fi
+}
+
+function clone_tree_viper() {
+  echo -e "\n\e[31m\e[1m Clone KERNELS?\e[m"
+  echo -e "\n\e[33m 1. Yes\e[m"
+  echo -e "\e[36m 2. No\e[m"
+  read clone_kernels
+  case "$clone_kernels" in
+    1|y) kernels=yes ;;
+    2|n|"") ;;
+  esac
+
+  echo -e "\n\e[31m\e[1m Clone VENDORS?\e[m"
+  echo -e "\n\e[33m 1. Yes\e[m"
+  echo -e "\e[36m 2. No\e[m"
+  read clone_vendors
+  case "$clone_vendors" in
+    1|y) vendors=yes ;;
+    2|n|"") ;;
+  esac
+
+  rm -rf device/xiaomi/beryllium
+  git clone ssh://git@github.com/Viper-Devices/android_device_xiaomi_beryllium -b pie device/xiaomi/beryllium
+
+  rm -rf device/xiaomi/sdm845-common
+  git clone ssh://git@github.com/Viper-Devices/android_device_xiaomi_sdm845-common -b pie device/xiaomi/sdm845-common
+
+  function kernels() {
+    rm -rf kernel/xiaomi/sdm845
+    git clone https://github.com/akhilnarang/beryllium -b pie kernel/xiaomi/sdm845
+  }
+
+  function vendors() {
+    rm -rf vendor/xiaomi
+    git clone https://gitlab.com/TeamIllusion/proprietary_vendor_xiaomi -b pie vendor/xiaomi
+    rm -rf vendor/xiaomi/{aries,armani,cancro,capricorn,chiron,dipper,equuleus,ferrari,gemini,hydrogen,ido,jasmine_sprout,jason,kenzo,land,libra,lithium,mido,msm*,natrium,polaris,sagit,santoni,scorpio,tissot,wayne*}
+  }
+
+  if [ -z $kernels ];then
+    echo -e "\n\e[33m No cloneed kernels!!!\e[m"
+  else
+    kernels
+  fi
+
+  if [ -z $vendors ];then
+    echo -e "\n\e[33m No cloned vendors!!!\e[m"
+  else
+    vendors
+  fi
+}
+
+function ask_tree() {
+  echo -e "\n\e[31m\e[1m Clone tree?\e[m"
+  echo -e "\n\e[33m 1. No [enter]\e[m"
+  echo -e "\e[32m 2. Clone tree KrakenProject (beryllium/whyred)\e[m"
+  echo -e "\e[36m 3. Clone tree ViperOS (beryllium)\e[m"
+  read ask_tree
+  case "$ask_tree" in
+    1|"") ;;
+    2) ask_tree_kraken=yes ;;
+    3) ask_tree_viper=yes ;;
+    *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
+  esac
+}
+
+ask_tree
+
 echo -e "\n\e[31m\e[1mBuild?\e[m"
 echo -e "\n\e[33m 1. Compile Dirty [enter]\e[m"
 echo -e "\e[36m 2. Clean and Clobber\e[m"
 echo -e "\e[32m 3. Repo sync\e[m"
 echo -e "\e[34m 4. Repo sync && Clean and Clobber\e[m"
+echo -e "\e[36m X. Anything\e[m"
 read answer
 case "$answer" in
   1|"")
@@ -74,6 +194,7 @@ case "$answer" in
     echo -e "\e[34m Syncing source...\e[m"
     repo sync -c -j32 --force-sync
   ;;
+  x|n|a) ;;
   *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
 esac
 
@@ -84,6 +205,18 @@ function build() {
   sudo rm -rf /var/www/krakenproject.club/building/$folder/*
   cp -rf out/target/product/*/$folder_*.* /var/www/krakenproject.club/building/$folder/
 }
+
+if [ -z $ask_tree_kraken ];then
+  echo -e ""
+else
+  clone_tree_kraken
+fi
+
+if [ -z $ask_tree_viper ];then
+  echo -e ""
+else
+  clone_tree_viper
+fi
 
 if [ -z $compile ];then
   echo -e "End!"
