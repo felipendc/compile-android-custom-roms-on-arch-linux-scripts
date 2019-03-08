@@ -11,12 +11,12 @@ mkdir -p $tmp
 
 function ask_branch() {
   echo -e "\e[31m\e[1m Which branch do you want to work on?\e[m"
-  echo -e "\n\e[32m 1. android-10.0 / lineage-17.0\e[m"
-  echo -e "\e[34m 2. android-9.0 / lineage-16.0\e[m"
+  echo -e "\n\e[32m 1. ten / lineage-17.0\e[m"
+  echo -e "\e[34m 2. pie / lineage-16.0\e[m"
   read branch
   case "$branch" in
-    1|"") branch_kk="android-10.0" ; branch_los="lineage-17.0" ;;
-    2) branch_kk="android-9.0" ; branch_los="lineage-16.0" ;;
+    1|"") branch_kk="ten" ; branch_los="lineage-17.0" ;;
+    2) branch_kk="pie" ; branch_los="lineage-16.0" ;;
     *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
   esac
   echo -e "\n\e[1m\e[3m Ok! You will work with branchs \e[31m\e[1m$branch_kk\e[m / \e[31m\e[1m$branch_los\e[m"
