@@ -12,7 +12,7 @@ export SELINUX_IGNORE_NEVERALLOWS=true
 export KRAKEN_BUILD_TYPE=OFFICIAL
 
 function ask_device() {
-  echo -e "\n\e[31m\e[1m Which device do you want to work?\e[m"
+  echo -e "\n\e[31m\e[1m ## Which device do you want to work?\e[m"
   echo -e "\n\e[33m 1. beryllium [enter]\e[m"
   echo -e "\e[32m 2. whyred\e[m"
   echo -e "\e[36m X. Anything\e[m"
@@ -26,7 +26,7 @@ function ask_device() {
 }
 
 function ask_branch() {
-  echo -e "\e[31m\e[1m Which branch do you want to work on?\e[m"
+  echo -e "\e[31m\e[1m ## Which branch do you want to work on?\e[m"
   echo -e "\n\e[32m 1. ten [enter]\e[m"
   echo -e "\e[34m 2. pie\e[m"
   read branch
@@ -37,9 +37,8 @@ function ask_branch() {
   esac
 }
 
-
 function ask_rom() {
-  echo -e "\n\e[31m\e[1m What do you want to do?\e[m"
+  echo -e "\n\e[31m\e[1m ## What do you want to do?\e[m"
   echo -e "\n\e[33m 1. KrakenProject [enter]\e[m"
   echo -e "\e[32m 2. ViperOS\e[m"
   echo -e "\e[36m X. Anything\e[m"
@@ -62,9 +61,10 @@ function ask_rom() {
 
 ask_device
 ask_rom
+ask_branch
 
 function clone_tree_kraken() {
-  echo -e "\n\e[31m\e[1m Clone KERNELS?\e[m"
+  echo -e "\n\e[31m\e[1m ## Clone KERNELS?\e[m"
   echo -e "\n\e[33m 1. Yes\e[m"
   echo -e "\e[36m 2. No\e[m"
   read clone_kernels
@@ -73,7 +73,7 @@ function clone_tree_kraken() {
     2|n|"") ;;
   esac
 
-  echo -e "\n\e[31m\e[1m Clone VENDORS?\e[m"
+  echo -e "\n\e[31m\e[1m ## Clone VENDORS?\e[m"
   echo -e "\n\e[33m 1. Yes\e[m"
   echo -e "\e[36m 2. No\e[m"
   read clone_vendors
@@ -118,7 +118,7 @@ function clone_tree_kraken() {
 }
 
 function clone_tree_viper() {
-  echo -e "\n\e[31m\e[1m Clone KERNELS?\e[m"
+  echo -e "\n\e[31m\e[1m ## Clone KERNELS?\e[m"
   echo -e "\n\e[33m 1. Yes\e[m"
   echo -e "\e[36m 2. No\e[m"
   read clone_kernels
@@ -127,7 +127,7 @@ function clone_tree_viper() {
     2|n|"") ;;
   esac
 
-  echo -e "\n\e[31m\e[1m Clone VENDORS?\e[m"
+  echo -e "\n\e[31m\e[1m ## Clone VENDORS?\e[m"
   echo -e "\n\e[33m 1. Yes\e[m"
   echo -e "\e[36m 2. No\e[m"
   read clone_vendors
@@ -154,20 +154,20 @@ function clone_tree_viper() {
   }
 
   if [ -z $kernels ];then
-    echo -e "\n\e[33m No cloneed kernels!!!\e[m"
+    echo -e ""
   else
     kernels
   fi
 
   if [ -z $vendors ];then
-    echo -e "\n\e[33m No cloned vendors!!!\e[m"
+    echo -e ""
   else
     vendors
   fi
 }
 
 function ask_tree() {
-  echo -e "\n\e[31m\e[1m Clone tree?\e[m"
+  echo -e "\n\e[31m\e[1m ## Clone tree?\e[m"
   echo -e "\n\e[33m 1. No [enter]\e[m"
   echo -e "\e[32m 2. Clone tree KrakenProject (beryllium/whyred)\e[m"
   echo -e "\e[36m 3. Clone tree ViperOS (beryllium)\e[m"
@@ -182,7 +182,7 @@ function ask_tree() {
 
 ask_tree
 
-echo -e "\n\e[31m\e[1mBuild?\e[m"
+echo -e "\n\e[31m\e[1m ## Build?\e[m"
 echo -e "\n\e[33m 1. Compile Dirty [enter]\e[m"
 echo -e "\e[36m 2. Clean and Clobber\e[m"
 echo -e "\e[32m 3. Repo sync\e[m"
@@ -232,7 +232,8 @@ else
 fi
 
 if [ -z $compile ];then
-  echo -e "End!"
+
+  echo -e "\n\e[31m End, you chose not to compile now.\e[m"
 else
   build
 fi

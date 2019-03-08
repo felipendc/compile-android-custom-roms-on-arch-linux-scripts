@@ -10,8 +10,8 @@ tmp=/home/mamutal91/.tmp/merging_$date/
 mkdir -p $tmp
 
 function ask_branch() {
-  echo -e "\e[31m\e[1m Which branch do you want to work on?\e[m"
-  echo -e "\n\e[32m 1. ten / lineage-17.0\e[m"
+  echo -e "\e[31m\e[1m ## Which branch do you want to work on?\e[m"
+  echo -e "\n\e[32m 1. ten / lineage-17.0 [enter]\e[m"
   echo -e "\e[34m 2. pie / lineage-16.0\e[m"
   read branch
   case "$branch" in
@@ -23,13 +23,15 @@ function ask_branch() {
 }
 
 function ask_action() {
-  echo -e "\n\e[31m\e[1m What do you want to do\e[m"
-  echo -e "\n\e[33m 1. Sync repositories \e[4m@KrakenProject\e[m\e[33m with \e[4m@mamutal91\e[m"
+  echo -e "\n\e[31m\e[1m ## What do you want to do\e[m"
+  echo -e "\n\e[33m 1. Sync repositories \e[4m@KrakenProject\e[m\e[33m with \e[4m@mamutal91\e[m \e[33m[enter]\e[m"
   echo -e "\e[36m 2. Pull rebase Lineage\e[m"
   echo -e "\e[32m 3. Update tree (beryllium/whyred)\e[m"
   echo -e "\e[34m 4. Merge tag AOSP\e[m"
   echo -e "\e[34m 5. Create BACKUP branch\e[m"
   echo -e "\e[36m 6. Remove BACKUP branch\e[m"
+  echo -e "\e[36m X. Anything\e[m"
+
   read action
   case "$action" in
     1|"")  action="mamutal91" ;;
@@ -38,6 +40,7 @@ function ask_action() {
     4)  action="aosp" ;;
     5)  action="create_backup" ;;
     6)  action="remove_backup" ;;
+    x|n|a) ;;
   esac
   echo -e "\n\e[1m\e[3m Ok! Selected: \e[31m\e[1m$action\e[m"
 }
@@ -176,7 +179,7 @@ function tree() {
 }
 
 function aosp() {
-  echo -e "\n\e[31m\e[1m What is the name of the tag you want to merge? (Ex: android-10.0.0_r1)\e[m" ; read tag_aosp
+  echo -e "\n\e[31m\e[1m ## What is the name of the tag you want to merge? (Ex: android-10.0.0_r1)\e[m" ; read tag_aosp
   echo $tag_aosp
   cd $tmp
 
@@ -224,7 +227,7 @@ function aosp() {
 }
 
 function create_backup() {
-  echo -e "\n\e[31m\e[1m What is the name of the new backup branch?\e[m" ; read branch_backup
+  echo -e "\n\e[31m\e[1m ## What is the name of the new backup branch?\e[m" ; read branch_backup
   for i in "${repos[@]}"; do
     repo=${i}
     cd $tmp && rm -rf $repo
@@ -235,7 +238,7 @@ function create_backup() {
 }
 
 function remove_backup(){
-  echo -e "\n\e[31m\e[1m What is the name of the backup branch you want to remove?\e[m" ; read branch_backup
+  echo -e "\n\e[31m\e[1m ## What is the name of the backup branch you want to remove?\e[m" ; read branch_backup
   for i in "${repos[@]}"; do
     repo=${i}
     cd $tmp && rm -rf $repo
