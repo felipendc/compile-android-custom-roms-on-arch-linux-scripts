@@ -30,7 +30,7 @@ function ask_action() {
   echo -e "\e[34m 4. Merge tag AOSP\e[m"
   echo -e "\e[34m 5. Create BACKUP branch\e[m"
   echo -e "\e[36m 6. Remove BACKUP branch\e[m"
-  echo -e "\e[36m X. Anything\e[m"
+  echo -e "\n\e[36m X. Nothing\e[m"
 
   read action
   case "$action" in

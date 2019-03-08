@@ -15,7 +15,7 @@ function ask_device() {
   echo -e "\n\e[31m\e[1m ## Which device do you want to work?\e[m"
   echo -e "\n\e[33m 1. beryllium [enter]\e[m"
   echo -e "\e[32m 2. whyred\e[m"
-  echo -e "\e[36m X. Anything\e[m"
+  echo -e "\n\e[36m X. Nothing\e[m"
   read answer
   case "$answer" in
     1|b|"") device=beryllium ;;
@@ -41,7 +41,7 @@ function ask_rom() {
   echo -e "\n\e[31m\e[1m ## What do you want to do?\e[m"
   echo -e "\n\e[33m 1. KrakenProject [enter]\e[m"
   echo -e "\e[32m 2. ViperOS\e[m"
-  echo -e "\e[36m X. Anything\e[m"
+  echo -e "\n\e[36m X. Nothing\e[m"
   read rom
   case "$rom" in
     1|"")
@@ -207,7 +207,7 @@ echo -e "\n\e[33m 1. Compile Dirty [enter]\e[m"
 echo -e "\e[36m 2. Clean and Clobber\e[m"
 echo -e "\e[32m 3. Repo sync\e[m"
 echo -e "\e[34m 4. Repo sync && Clean and Clobber\e[m"
-echo -e "\e[36m X. Anything\e[m"
+echo -e "\n\e[36m X. Nothing\e[m"
 read answer
 case "$answer" in
   1|"")
