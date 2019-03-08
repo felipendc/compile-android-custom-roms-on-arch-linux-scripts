@@ -233,8 +233,15 @@ esac
 
 function build() {
   . build/envsetup.sh
-  lunch $lunch_$device-userdebug
-  make -j32 $b 2>&1 | tee log.txt
+
+  if [ $lunch == "aosp" ];then
+    lunch aosp_$device-userdebug
+  else
+    lunch viper_$device-userdebug
+  fi
+
+  make -j32 $rom 2>&1 | tee log.txt
+
   sudo rm -rf /var/www/krakenproject.club/building/$folder/*
   cp -rf out/target/product/*/$folder_*.* /var/www/krakenproject.club/building/$folder/
 }
