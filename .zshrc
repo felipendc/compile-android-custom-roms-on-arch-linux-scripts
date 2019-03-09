@@ -34,12 +34,16 @@ export VIPER_BUILD_TYPE=OFFICIAL
 function site () {
   pwd=$(pwd)
   cd /var/www/krakenproject.club
-  sudo rm -rf *
+  sudo rm -rf css js favicon.ico index.html
   git clone https://github.com/andersonmendess/kraken -b prod
   cd kraken
   mv * .. && cd ..
   rm -rf kraken
   cd $pwd
+}
+
+function up () {
+  cp -rf ${1} /var/www/krakenproject.club/building
 }
 
 function upload () {
@@ -62,11 +66,6 @@ function push () {
 
 function p () {
   git cherry-pick ${1}
-}
-
-function up () {
-  rm -rf /var/www/krakenproject.club/building/KK*
-  cp -rf ${1} /var/www/krakenproject.club/building
 }
 
 function scripts () {
