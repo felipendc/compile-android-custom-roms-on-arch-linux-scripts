@@ -33,26 +33,26 @@ function ask_device() {
 }
 
 function ask_branch() {
-  echo -e "\e[31m\e[1m ## Which branch do you want to work on?\e[m"
-  echo -e "\n\e[32m 1. ten [enter]\e[m"
-  echo -e "\e[34m 2. pie\e[m"
+  echo -e "\e[31m\e[1m ## If for cloning trees ... Answer: which branch do you want to work on?\e[m"
+  echo -e "\n\e[31m X. Nothing [enter]\e[m"
+  echo -e "\e[32m 2. ten\e[m"
+  echo -e "\e[34m 3. pie\e[m"
   read branch
   case "$branch" in
-    1|"") branch_kk="ten" ;;
-    2) branch_kk="pie" ;;
+    1|x|n|a|"") ;;
+    2) branch_kk="ten" ;;
+    3) branch_kk="pie" ;;
     *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
   esac
 }
 
 function ask_rom() {
   echo -e "\n\e[31m\e[1m ## What do you want to do?\e[m"
-  echo -e "\n\e[33m 1. Nothing [enter]\e[m"
-  echo -e "\n\e[33m 2. KrakenProject\e[m"
-  echo -e "\e[32m 3. ViperOS\e[m"
+  echo -e "\n\e[33m 1. KrakenProject\e[m"
+  echo -e "\e[32m 2. ViperOS\e[m"
   read rom
   case "$rom" in
-    x|n|a|"") ;;
-    1)
+    1|"")
       rom=bacon
       lunch=aosp
       folder=Kraken
@@ -62,6 +62,7 @@ function ask_rom() {
       lunch=viper
       folder=Viper
     ;;
+    x|n|a) ;;
     *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
   esac
 }
@@ -195,7 +196,7 @@ function clone_tree_viper() {
 
 function ask_tree() {
   echo -e "\n\e[31m\e[1m ## Clone tree?\e[m"
-  echo -e "\n\e[33m 1. No [enter]\e[m"
+  echo -e "\n\e[31m 1. No [enter]\e[m"
   echo -e "\e[32m 2. Clone tree KrakenProject (beryllium/whyred)\e[m"
   echo -e "\e[36m 3. Clone tree ViperOS (beryllium)\e[m"
   read ask_tree

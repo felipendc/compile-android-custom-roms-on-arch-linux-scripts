@@ -24,6 +24,10 @@ function upload () {
   scp /home/mamutal91/kk/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/krakenproject/beryllium
 }
 
+function upload_viper () {
+  scp /home/mamutal91/viper/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/viper-project/beryllium
+}
+
 function push () {
   git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/${2} --force
   git push ssh://git@github.com/KrakenProject/${1} HEAD:refs/heads/${2} --force
