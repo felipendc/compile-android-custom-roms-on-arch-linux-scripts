@@ -54,7 +54,7 @@ readonly repos=(
   device_custom_sepolicy
   device_qcom_sepolicy
   device_qcom_sepolicy-legacy
-  kraken-sdk
+  custom-sdk
   packages_apps_Bluetooth
   packages_apps_CustomParts
   packages_apps_DocumentsUI
@@ -88,7 +88,7 @@ function lineage() {
   cd $tmp
 
   echo -e "\n\e[33m Attention! The following repositories are disabled, and must be updated manually:\e[m"
-  echo -e "\n\e[33m kraken-sdk\e[m"
+  echo -e "\n\e[33m custom-sdk\e[m"
   echo -e "\n\e[33m vendor_aosp\e[m"
   echo -e "\n\e[33m prebuilts_clang_host_linux-x86\e[m"
 
@@ -117,9 +117,9 @@ function lineage() {
   echo && git rebase && echo && git push ssh://git@github.com/mamutal91/device_qcom_sepolicy-legacy HEAD:refs/heads/$branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
-#  git clone ssh://git@github.com/mamutal91/kraken-sdk -b $branch_kk && cd kraken-sdk
+#  git clone ssh://git@github.com/mamutal91/custom-sdk -b $branch_kk && cd custom-sdk
 #  git pull --rebase https://github.com/LineageOS/android_lineage-sdk -t $branch_los
-#  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/kraken-sdk HEAD:refs/heads/$branch_kk && cd $tmp
+#  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/custom-sdk HEAD:refs/heads/$branch_kk && cd $tmp
 #echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_Bluetooth -b $branch_kk && cd packages_apps_Bluetooth
