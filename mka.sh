@@ -3,7 +3,13 @@
 
 clear
 
-prebuilts/misc/linux-x86/ccache/ccache -M 100G
+dir=($pwd)
+
+if [ "$dir" == "/home/mamutal91/viper" ]; then
+  prebuilts/misc/linux-x86/ccache/ccache -M 100G
+else
+  echo ""
+fi
 
 export USE_CCACHE=1
 export KBUILD_BUILD_USER=mamutal91
