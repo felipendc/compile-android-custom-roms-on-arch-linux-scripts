@@ -46,12 +46,13 @@ function ask_branch() {
 
 function ask_rom() {
   echo -e "\n\e[31m\e[1m ## What do you want to do?\e[m"
-  echo -e "\n\e[33m 1. KrakenProject [enter]\e[m"
-  echo -e "\e[32m 2. ViperOS\e[m"
-  echo -e "\n\e[36m X. Nothing\e[m"
+  echo -e "\n\e[33m 1. Nothing [enter]\e[m"
+  echo -e "\n\e[33m 2. KrakenProject\e[m"
+  echo -e "\e[32m 3. ViperOS\e[m"
   read rom
   case "$rom" in
-    1|"")
+    x|n|a|"") ;;
+    1)
       rom=bacon
       lunch=aosp
       folder=Kraken
@@ -61,7 +62,6 @@ function ask_rom() {
       lunch=viper
       folder=Viper
     ;;
-    x|n|a) ;;
     *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
   esac
 }
