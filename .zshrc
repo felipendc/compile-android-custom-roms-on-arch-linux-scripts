@@ -28,6 +28,11 @@ function upload_viper () {
   scp /home/mamutal91/viper/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/viper-project/beryllium
 }
 
+function fetch () {
+  echo "lineage-17.0"
+  git fetch https://github.com/LineageOS/android_${1} lineage-17.0
+}
+
 function push () {
   git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/${2} --force
   git push ssh://git@github.com/KrakenProject/${1} HEAD:refs/heads/${2} --force
