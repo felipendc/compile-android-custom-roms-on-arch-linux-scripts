@@ -42,6 +42,15 @@ function site () {
   cd $pwd
 }
 
+function tree () {
+  pwd=$(pwd)
+  cd /home/mamutal91/kk
+  rm -rf device/xiaomi
+  git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
+  git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
+  cd $pwd
+}
+
 function up () {
   cp -rf ${1} /var/www/krakenproject.club/building
 }
