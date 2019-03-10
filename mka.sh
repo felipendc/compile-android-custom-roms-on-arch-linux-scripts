@@ -239,6 +239,8 @@ case "$answer" in
   *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
 esac
 
+clear
+
 function build() {
   . build/envsetup.sh
 
