@@ -9,7 +9,7 @@ sudo pacman -S reflector --noconfirm
 sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 function pacman(){
-  sudo pacman -Sy base-devel go git zsh zsh-syntax-highlighting repo wget ccache imagemagick cronie ntp lzip --needed --noconfirm
+  sudo pacman -Sy base-devel go git zsh zsh-syntax-highlighting repo wget ccache imagemagick cronie ntp lzip nginx --needed --noconfirm
 }
 
 function yay-install(){
