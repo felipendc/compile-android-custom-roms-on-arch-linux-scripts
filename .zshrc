@@ -29,8 +29,8 @@ function upload_viper () {
 }
 
 function fetch () {
-  echo "lineage-17.0"
-  git fetch https://github.com/LineageOS/android_${1} lineage-17.0
+  echo "lineage-${2}.0"
+  git fetch https://github.com/LineageOS/android_${1} lineage-${2}.0
 }
 
 function push () {
