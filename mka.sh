@@ -34,14 +34,14 @@ function ask_device() {
 
 function ask_branch() {
   echo -e "\e[31m\e[1m ## If for cloning trees ... Answer: which branch do you want to work on?\e[m"
-  echo -e "\n\e[31m X. Nothing [enter]\e[m"
-  echo -e "\e[32m 2. ten\e[m"
-  echo -e "\e[34m 3. pie\e[m"
+  echo -e "\n\e[32m 1. ten\e[m"
+  echo -e "\e[34m 2. pie\e[m"
+  echo -e "\e[31m X. Nothing [enter]\e[m"
   read branch
   case "$branch" in
-    1|x|n|a|"") ;;
-    2) branch_kk="ten" ;;
-    3) branch_kk="pie" ;;
+    x|n|a|"") ;;
+    1) branch_kk="ten" ;;
+    2) branch_kk="pie" ;;
     *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
   esac
 }
@@ -196,14 +196,14 @@ function clone_tree_viper() {
 
 function ask_tree() {
   echo -e "\n\e[31m\e[1m ## Clone tree?\e[m"
-  echo -e "\n\e[31m 1. No [enter]\e[m"
-  echo -e "\e[32m 2. Clone tree KrakenProject (beryllium/whyred)\e[m"
-  echo -e "\e[36m 3. Clone tree ViperOS (beryllium)\e[m"
+  echo -e "\e[32m 1. Clone tree KrakenProject (beryllium/whyred)\e[m"
+  echo -e "\e[36m 2. Clone tree ViperOS (beryllium)\e[m"
+  echo -e "\e[31m X. No [enter]\e[m"
   read ask_tree
   case "$ask_tree" in
-    1|"") ;;
-    2) ask_tree_kraken=yes ;;
-    3) ask_tree_viper=yes ;;
+    1) ask_tree_kraken=yes ;;
+    2) ask_tree_viper=yes ;;
+    "") ;;
     *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
   esac
 }
