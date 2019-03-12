@@ -227,13 +227,13 @@ case "$answer" in
   ;;
   3)
     echo -e "\e[34m Syncing source...\e[m"
-    repo sync -c -j32 --force-sync
+    repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync
   ;;
   4)
     echo -e "\e[34m Cleaning builds...\e[m"
     make clobber && make clean
     echo -e "\e[34m Syncing source...\e[m"
-    repo sync -c -j32 --force-sync
+    repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync
   ;;
   x|n|a) ;;
   *) echo -e "\n\e[31m Invalid Answer!\e[m" ;;
@@ -250,7 +250,7 @@ function build() {
     lunch viper_$device-userdebug
   fi
 
-  make -j32 $rom 2>&1 | tee log.txt
+  make -j$(nproc --all) $rom 2>&1 | tee log.txt
 
   sudo rm -rf /var/www/krakenproject.club/building/$folder/*
   cp -rf out/target/product/*/$folder_*.* /var/www/krakenproject.club/building/$folder/
