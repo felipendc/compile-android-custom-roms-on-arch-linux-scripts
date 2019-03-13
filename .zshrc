@@ -77,21 +77,42 @@ function p () {
   git cherry-pick ${1}
 }
 
+function hal () {
+  hal=$(pwd)
+  cd /home/mamutal91/kk
+  ./hal.sh sdm845
+  ./hal.sh 8916
+  ./hal.sh 8952
+  ./hal.sh 8960
+  ./hal.sh 8974
+  ./hal.sh 8994
+  ./hal.sh 8996
+  ./hal.sh 8998
+  cd $hal
+}
+
+function gapps () {
+  gapps=$(pwd)
+  cd /home/mamutal91/kk
+  ./gapps.sh
+  cd $gapps
+}
+
 function scripts () {
   scripts=$(pwd)
   rm -rf $HOME/.tmp
   rm -rf $HOME/.zshrc
   rm -rf $HOME/.apt.sh
-  rm -rf $HOME/viper/merging.sh
-  rm -rf $HOME/viper/mka.sh
   rm -rf $HOME/kk/merging.sh
   rm -rf $HOME/kk/mka.sh
+  rm -rf $HOME/kk/hal.sh
+  rm -rf $HOME/kk/gapps.sh
   cd $HOME && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.zshrc
   cd $HOME && rm -rf .apt.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.apt.sh && chmod +x .apt.sh
-  cd $HOME/viper && rm -rf merging.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/merging.sh && chmod +x merging.sh
-  cd $HOME/viper && rm -rf mka.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/mka.sh && chmod +x mka.sh
   cd $HOME/kk && rm -rf merging.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/merging.sh && chmod +x merging.sh
   cd $HOME/kk && rm -rf mka.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/mka.sh && chmod +x mka.sh
+  cd $HOME/kk && rm -rf hal.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/hal.sh && chmod +x hal.sh
+  cd $HOME/kk && rm -rf gapps.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/gapps.sh && chmod +x gapps.sh
   cd $scripts
   clear
 }

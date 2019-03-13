@@ -12,30 +12,43 @@ function push () {
 
 branch_kk=ten
 branch_los=lineage-17.0
+
+tag_aosp=android-10.0.0_r4
+
 date=$(date +"%Y%m%d-%H%M")
 tmp=/home/mamutal91/.tmp/merging_$date/
 mkdir -p $tmp
 end="\n\e[33m------------------------------------------------------\e[m"
 
-echo -e "\n\e[31m\e[1m ## What do you want to do\e[m"
-echo -e "\n\e[33m 1. Sync repositories \e[4m@KrakenProject\e[m\e[33m with \e[4m@mamutal91\e[m \e[33m[enter]\e[m"
-echo -e "\e[36m 2. Pull rebase Lineage\e[m"
-echo -e "\e[32m 3. Update tree (beryllium/whyred)\e[m"
-echo -e "\e[34m 4. Merge tag AOSP\e[m"
-echo -e "\e[34m 5. Create BACKUP branch\e[m"
-echo -e "\e[36m 6. Remove BACKUP branch\e[m"
-echo -e "\n\e[36m X. Nothing\e[m"
+function ask() {
+  echo -e "\n\e[31m\e[1m ## What do you want to do\e[m"
+  echo -e "\n\e[33m 1. Sync repositories \e[4m@KrakenProject\e[m\e[33m with \e[4m@mamutal91\e[m \e[33m[enter]\e[m"
+  echo -e "\e[36m 2. Pull rebase Lineage\e[m"
+  echo -e "\e[36m 3. Pull rebase Lineage (REPOS AOSP)\e[m"
+  echo -e "\e[32m 4. Update tree (beryllium/whyred)\e[m"
+  echo -e "\e[34m 5. Merge tag AOSP\e[m"
+  echo -e "\e[34m 6. Create BACKUP branch\e[m"
+  echo -e "\e[36m 7. Remove BACKUP branch\e[m"
+  echo -e "\n\e[36m X. Nothing\e[m"
 
-read action
-  case "$action" in
-    1|"")  action="mamutal91" ;;
-    2)  action="lineage" ;;
-    3)  action="tree" ;;
-    4)  action="aosp" ;;
-    5)  action="create_backup" ;;
-    6)  action="remove_backup" ;;
-    x|n|a) ;;
-  esac
+  read action
+    case "$action" in
+      1|"")  action="mamutal91" ;;
+      2)  action="lineage" ;;
+      3)  action="lineage_aosp" ;;
+      4)  action="tree" ;;
+      5)  action="merging_tag_aosp" ;;
+      6)  action="create_backup" ;;
+      7)  action="remove_backup" ;;
+      x|n|a) ;;
+    esac
+}
+
+if [ -z ${1} ];then
+  ask
+else
+  action=${1}
+fi
 
 readonly repos=(
   build
@@ -48,6 +61,7 @@ readonly repos=(
   packages_apps_CustomParts
   packages_apps_DocumentsUI
   packages_apps_Launcher3
+  packages_apps_ThemePicker
   packages_apps_Settings
   packages_apps_Updater
   packages_overlays_Custom
@@ -71,6 +85,28 @@ function mamutal91() {
     echo && git push ssh://git@github.com/KrakenProject/$repo HEAD:refs/heads/$branch_kk --force
     echo -e $end
   done
+}
+
+xml=.repo/manifests/snippets/aosp.xml
+
+name=($(awk -F '"' '/project path/{print $4}' $xml))
+path=($(awk -F '"' '/project path/{print $2}' $xml))
+
+blacklist=()
+
+function merging_tag_aosp(){
+	for (( i = j = 0; i < ${#path[@]}, j < ${#name[@]}; i++, j++ )); do
+		if ! printf '%s\n' "${blacklist[@]}" | grep -Eqw "${name[j]}"
+		then
+      kk=$(pwd)
+      cd ${path[i]}
+      git pull https://android.googlesource.com/platform/${path[i]} -t $tag_aosp
+      push ${name[j]} ten
+      cd $kk
+      echo
+      echo
+		fi
+	done
 }
 
 function lineage() {
@@ -165,54 +201,6 @@ function tree() {
     echo && git rebase && git push ssh://git@github.com/KrakenDevices/$repo HEAD:refs/heads/$branch_kk --force
     echo -e $end
   done
-}
-
-function aosp() {
-  echo -e "\n\e[31m\e[1m ## What is the name of the tag you want to merge? (Ex: android-10.0.0_r1)\e[m" ; read tag_aosp
-  echo $tag_aosp
-  cd $tmp
-
-  git clone ssh://git@github.com/mamutal91/build -b $branch_kk
-  cd build
-  git pull https://android.googlesource.com/platform/build -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/build HEAD:refs/heads/$branch_kk && cd $tmp
-  echo -e $end
-
-  git clone ssh://git@github.com/mamutal91/build_soong -b $branch_kk
-  cd build_soong
-  git pull https://android.googlesource.com/platform/build/soong -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/build_soong HEAD:refs/heads/$branch_kk && cd $tmp
-  echo -e $end
-
-  git clone ssh://git@github.com/mamutal91/packages_apps_Bluetooth -b $branch_kk
-  cd packages_apps_Bluetooth
-  git pull https://android.googlesource.com/platform/packages/apps/Bluetooth -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/packages_apps_Bluetooth HEAD:refs/heads/$branch_kk && cd $tmp
-  echo -e $end
-
-  git clone ssh://git@github.com/mamutal91/packages_apps_DocumentsUI -b $branch_kk
-  cd packages_apps_DocumentsUI
-  git pull https://android.googlesource.com/platform/packages/apps/DocumentsUI -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/packages_apps_DocumentsUI HEAD:refs/heads/$branch_kk && cd $tmp
-  echo -e $end
-
-  git clone ssh://git@github.com/mamutal91/packages_apps_Launcher3 -b $branch_kk
-  cd packages_apps_Launcher3
-  git pull https://android.googlesource.com/platform/packages/apps/Launcher3 -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/packages_apps_Launcher3 HEAD:refs/heads/$branch_kk && cd $tmp
-  echo -e $end
-
-  git clone ssh://git@github.com/mamutal91/packages_apps_Settings -b $branch_kk
-  cd packages_apps_Settings
-  git pull https://android.googlesource.com/platform/packages/apps/Settings -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/packages_apps_Settings HEAD:refs/heads/$branch_kk && cd $tmp
-  echo -e $end
-
-  git clone ssh://git@github.com/mamutal91/frameworks_base -b $branch_kk
-  cd frameworks_base
-  git pull https://android.googlesource.com/platform/frameworks/base -t $tag_aosp
-  echo && git push ssh://git@github.com/mamutal91/frameworks_base HEAD:refs/heads/$branch_kk && cd $tmp
-  echo -e $end
 }
 
 function create_backup() {
