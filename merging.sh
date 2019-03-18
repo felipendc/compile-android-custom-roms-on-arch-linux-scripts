@@ -88,21 +88,19 @@ function lineage() {
   cd $tmp
 
   echo -e "\n\e[33m Attention! The following repositories are disabled, and must be updated manually:\e[m"
-  echo -e "\n\e[33m build\e[m"
-  echo -e "\e[33m build_soong\e[m"
-  echo -e "\e[33m custom-sdk\e[m"
+  echo -e "\n\e[33m custom-sdk\e[m"
   echo -e "\e[33m vendor_aosp\e[m"
   echo -e "\e[33m prebuilts_clang_host_linux-x86\e[m"
 
-#  git clone ssh://git@github.com/mamutal91/build -b $branch_kk && cd build
-#  git pull --rebase https://github.com/LineageOS/android_build -t $branch_los
-#  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/build HEAD:refs/heads/$branch_kk && cd $tmp
-#  echo -e "\n\e[33m------------------------------------------------------\e[m"
+  git clone ssh://git@github.com/mamutal91/build -b $branch_kk && cd build
+  git pull --rebase https://github.com/LineageOS/android_build -t $branch_los
+  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/build HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
 
-#  git clone ssh://git@github.com/mamutal91/build_soong -b $branch_kk && cd build_soong
-#  git pull --rebase https://github.com/LineageOS/android_build_soong -t $branch_los
-#  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/build_soong HEAD:refs/heads/$branch_kk && cd $tmp
-#  echo -e "\n\e[33m------------------------------------------------------\e[m"
+  git clone ssh://git@github.com/mamutal91/build_soong -b $branch_kk && cd build_soong
+  git pull --rebase https://github.com/LineageOS/android_build_soong -t $branch_los
+  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/build_soong HEAD:refs/heads/$branch_kk && cd $tmp
+  echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/device_custom_sepolicy -b $branch_kk && cd device_custom_sepolicy
   git pull --rebase https://github.com/LineageOS/android_device_lineage_sepolicy -t $branch_los
