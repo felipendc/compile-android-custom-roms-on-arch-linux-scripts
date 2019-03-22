@@ -19,6 +19,7 @@ export PATH=~/.bin:$PATH
 export PATH=$PATH:~/.android-sdk/tools/
 export PATH=$PATH:~/.android-sdk/platform-tools/
 export JAVA_HOME=/usr/lib/jvm/java
+export SELINUX_IGNORE_NEVERALLOWS=true
 
 function upload () {
   scp /home/mamutal91/kk/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/krakenproject/beryllium
