@@ -5,6 +5,11 @@
 
 clear
 
+function push () {
+  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/${2} --force
+  git push ssh://git@github.com/KrakenProject/${1} HEAD:refs/heads/${2} --force
+}
+
 date=$(date +"%Y%m%d-%H%M")
 tmp=/home/mamutal91/.tmp/merging_$date/
 mkdir -p $tmp
@@ -94,82 +99,82 @@ function lineage() {
 
   git clone ssh://git@github.com/mamutal91/build -b $branch_kk && cd build
   git pull --rebase https://github.com/LineageOS/android_build -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/build HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push build $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/build_soong -b $branch_kk && cd build_soong
   git pull --rebase https://github.com/LineageOS/android_build_soong -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/build_soong HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push build_soong $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/device_custom_sepolicy -b $branch_kk && cd device_custom_sepolicy
   git pull --rebase https://github.com/LineageOS/android_device_lineage_sepolicy -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/device_custom_sepolicy HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push device_custom_sepolicy $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/device_qcom_sepolicy -b $branch_kk && cd device_qcom_sepolicy
   git pull --rebase https://github.com/LineageOS/android_device_qcom_sepolicy -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/device_qcom_sepolicy HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push device_qcom_sepolicy $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/device_qcom_sepolicy-legacy -b $branch_kk && cd device_qcom_sepolicy-legacy
   git pull --rebase https://github.com/LineageOS/android_device_qcom_sepolicy-legacy -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/device_qcom_sepolicy-legacy HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push device_qcom_sepolicy-legacy $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
 #  git clone ssh://git@github.com/mamutal91/custom-sdk -b $branch_kk && cd custom-sdk
 #  git pull --rebase https://github.com/LineageOS/android_lineage-sdk -t $branch_los
-#  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/custom-sdk HEAD:refs/heads/$branch_kk && cd $tmp
+#  echo && git rebase && echo && push custom-sdk $branch_kk && cd $tmp
 #echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_Bluetooth -b $branch_kk && cd packages_apps_Bluetooth
   git pull --rebase https://github.com/LineageOS/android_packages_apps_Bluetooth -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Bluetooth HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push packages_apps_Bluetooth $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_CustomParts -b $branch_kk && cd packages_apps_CustomParts
   git pull --rebase https://github.com/LineageOS/android_packages_apps_LineageParts -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_CustomParts HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push packages_apps_CustomParts $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_DocumentsUI -b $branch_kk && cd packages_apps_DocumentsUI
   git pull --rebase https://github.com/LineageOS/android_packages_apps_DocumentsUI -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_DocumentsUI HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push packages_apps_DocumentsUI $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_Launcher3 -b $branch_kk && cd packages_apps_Launcher3
   git pull --rebase https://github.com/LineageOS/android_packages_apps_Trebuchet -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Launcher3 HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push packages_apps_Launcher3 $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_Settings -b $branch_kk && cd packages_apps_Settings
   git pull --rebase https://github.com/LineageOS/android_packages_apps_Settings -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Settings HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push packages_apps_Settings $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_apps_Updater -b $branch_kk && cd packages_apps_Updater
   git pull --rebase https://github.com/LineageOS/android_packages_apps_Updater -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_apps_Updater HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push packages_apps_Updater $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/packages_overlays_Custom -b $branch_kk && cd packages_overlays_Custom
   git pull --rebase https://github.com/LineageOS/android_packages_overlays_Lineage -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/packages_overlays_Custom HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push packages_overlays_Custom $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
 #  git clone ssh://git@github.com/mamutal91/vendor_aosp -b $branch_kk && cd vendor_aosp
 #  git pull --rebase https://github.com/LineageOS/android_vendor_lineage -t $branch_los
-#  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/vendor_aosp HEAD:refs/heads/$branch_kk && cd $tmp
+#  echo && git rebase && push vendor_aosp $branch_kk && cd $tmp
 #echo -e "\n\e[33m------------------------------------------------------\e[m"
 
   git clone ssh://git@github.com/mamutal91/frameworks_base -b $branch_kk && cd frameworks_base
   git pull --rebase https://github.com/LineageOS/android_frameworks_base -t $branch_los
-  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/frameworks_base HEAD:refs/heads/$branch_kk && cd $tmp
+  echo && git rebase && echo && push frameworks_base $branch_kk && cd $tmp
   echo -e "\n\e[33m------------------------------------------------------\e[m"
 
 #  git clone ssh://git@github.com/mamutal91/prebuilts_clang_host_linux-x86 -b $branch_kk && cd prebuilts_clang_host_linux-x86
 #  git pull --rebase https://github.com/AOSiP/platform_prebuilts_clang_host_linux-x86 -t pie
-#  echo && git rebase && echo && git push ssh://git@github.com/mamutal91/prebuilts_clang_host_linux-x86 HEAD:refs/heads/$branch_kk && cd $tmp
+#  echo && git rebase && echo && push prebuilts_clang_host_linux-x86 $branch_kk && cd $tmp
 #  echo -e "\n\e[33m------------------------------------------------------\e[m"
 }
 
