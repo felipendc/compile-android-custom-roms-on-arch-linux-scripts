@@ -45,6 +45,7 @@ function p () {
 
 function scripts () {
   scripts=$(pwd)
+  rm -rf $HOME/.tmp
   rm -rf $HOME/.zshrc
   rm -rf $HOME/.pacman.sh
   rm -rf $HOME/viper/merging.sh
