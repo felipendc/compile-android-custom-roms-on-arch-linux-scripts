@@ -238,4 +238,11 @@ function remove_backup(){
   done
 }
 
+if [ -z $branch_kk ];then
+  echo -e "\n\e[33m You need to specify a branch to work with!!!\e[m"
+else
+  echo -e "\n\n\e[33m Starting !!! \n\e[m"
+  $action
+fi
+
 rm -rf $tmp
