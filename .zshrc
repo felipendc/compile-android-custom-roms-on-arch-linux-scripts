@@ -38,6 +38,18 @@ function site () {
   cd $pwd
 }
 
+function m () {
+. build/envsetup.sh && lunch aosp_beryllium-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
+}
+
+function sync () {
+  repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync
+}
+
+function clean () {
+  make clobber && make clean
+}
+
 function upload () {
   scp /home/mamutal91/kk/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/krakenproject/beryllium
 }
