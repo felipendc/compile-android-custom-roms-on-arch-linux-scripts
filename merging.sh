@@ -77,8 +77,7 @@ function lineage() {
   cd $tmp
 
   echo -e "\n\e[33m Attention! The following repositories are disabled, and must be updated manually:\e[m"
-  echo -e "\n\e[33m manifest\e[m"
-  echo -e "\e[33m vendor_aosp\e[m"
+  echo -e "\n\e[33m vendor_aosp\e[m"
   echo -e "\e[33m prebuilts_clang_host_linux-x86\e[m\n"
 
   git clone ssh://git@github.com/mamutal91/build -b $branch_kk && cd build
