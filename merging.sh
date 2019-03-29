@@ -11,6 +11,7 @@ function push () {
 }
 
 branch_kk=ten
+branch_los=lineage-17.0
 date=$(date +"%Y%m%d-%H%M")
 tmp=/home/mamutal91/.tmp/merging_$date/
 mkdir -p $tmp
@@ -236,12 +237,5 @@ function remove_backup(){
     echo -e $end
   done
 }
-
-if [ -z $branch_kk ];then
-  echo -e "\n\e[33m You need to specify a branch to work with!!!\e[m"
-else
-  echo -e "\n\n\e[33m Starting !!! \n\e[m"
-  $action
-fi
 
 rm -rf $tmp
