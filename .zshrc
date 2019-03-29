@@ -27,6 +27,17 @@ export SELINUX_IGNORE_NEVERALLOWS=true
 export CUSTOM_BUILD_TYPE=OFFICIAL
 export VIPER_BUILD_TYPE=OFFICIAL
 
+function site () {
+  pwd=$(pwd)
+  cd /var/www/krakenproject.club
+  sudo rm -rf *
+  git clone https://github.com/andersonmendess/kraken -b prod
+  cd kraken
+  mv * .. && cd ..
+  rm -rf kraken
+  cd $pwd
+}
+
 function upload () {
   scp /home/mamutal91/kk/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/krakenproject/beryllium
 }
