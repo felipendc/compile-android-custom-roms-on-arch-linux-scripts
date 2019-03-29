@@ -19,7 +19,13 @@ export PATH=~/.bin:$PATH
 export PATH=$PATH:~/.android-sdk/tools/
 export PATH=$PATH:~/.android-sdk/platform-tools/
 export JAVA_HOME=/usr/lib/jvm/java
+
+export USE_CCACHE=1
+export KBUILD_BUILD_USER=mamutal91
+export KBUILD_BUILD_HOST=MamutBox
 export SELINUX_IGNORE_NEVERALLOWS=true
+export CUSTOM_BUILD_TYPE=OFFICIAL
+export VIPER_BUILD_TYPE=OFFICIAL
 
 function upload () {
   scp /home/mamutal91/kk/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/krakenproject/beryllium
