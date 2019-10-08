@@ -72,6 +72,10 @@ function p () {
  git cherry-pick ${1}
 }
 
+function up () {
+ cp -rf ${1} /var/www/krakenproject.club/building
+}
+
 function scripts () {
   scripts=$(pwd)
   rm -rf $HOME/.tmp
