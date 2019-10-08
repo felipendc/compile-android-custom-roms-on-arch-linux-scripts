@@ -57,11 +57,12 @@ function push () {
 }
 
 function p () {
- git cherry-pick ${1}
+  git cherry-pick ${1}
 }
 
 function up () {
- cp -rf ${1} /var/www/krakenproject.club/building
+  rm -rf /var/www/krakenproject.club/building/KK*
+  cp -rf ${1} /var/www/krakenproject.club/building
 }
 
 function scripts () {
