@@ -21,6 +21,10 @@ export PATH=$PATH:~/.android-sdk/platform-tools/
 export JAVA_HOME=/usr/lib/jvm/java
 
 export USE_CCACHE=1
+export CCACHE_DIR="${HOME}/.ccache"
+export CCACHE_EXEC="$(which ccache)"
+# ccache -M 100G
+
 export KBUILD_BUILD_USER=mamutal91
 export KBUILD_BUILD_HOST=MamutBox
 export SELINUX_IGNORE_NEVERALLOWS=true
