@@ -1,7 +1,7 @@
 # Add org
 
 # Adjust the following variables as necessary
-REMOTE=mamutal91
+REMOTE=aosp-forking
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 BATCH_SIZE=500
 
