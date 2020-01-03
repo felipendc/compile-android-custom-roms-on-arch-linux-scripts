@@ -1,5 +1,4 @@
 # Add org
-git remote add org https://github.com/mamutal91/frameworks_base
 
 # Adjust the following variables as necessary
 REMOTE=mamutal91
