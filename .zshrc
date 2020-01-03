@@ -29,7 +29,6 @@ export KBUILD_BUILD_USER=mamutal91
 export KBUILD_BUILD_HOST=MamutBox
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CUSTOM_BUILD_TYPE=OFFICIAL
-export VIPER_BUILD_TYPE=OFFICIAL
 
 function site () {
   pwd=$(pwd)
@@ -44,7 +43,7 @@ function site () {
 
 function tree () {
   pwd=$(pwd)
-  cd /home/mamutal91/kk
+  cd /home/mamutal91/aosp
   rm -rf device/xiaomi
   git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
   git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
@@ -59,43 +58,18 @@ function upload () {
   scp /home/mamutal91/kk/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/krakenproject/beryllium
 }
 
-function upload_viper () {
-  scp /home/mamutal91/viper/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/viper-project/beryllium
-}
-
 function fetch () {
-  echo "lineage-${2}.0"
-  git fetch https://github.com/LineageOS/android_${1} lineage-${2}.0
+  echo "lineage-${2}.1"
+  git fetch https://github.com/LineageOS/android_${1} lineage-${2}.1
 }
 
 function push () {
   git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/${2} --force
-  git push ssh://git@github.com/KrakenProject/${1} HEAD:refs/heads/${2} --force
+  git push ssh://git@github.com/aosp-forking/${1} HEAD:refs/heads/${2} --force
 }
 
 function p () {
   git cherry-pick ${1}
-}
-
-function hal () {
-  hal=$(pwd)
-  cd /home/mamutal91/kk
-  ./hal.sh sdm845
-  ./hal.sh 8916
-  ./hal.sh 8952
-  ./hal.sh 8960
-  ./hal.sh 8974
-  ./hal.sh 8994
-  ./hal.sh 8996
-  ./hal.sh 8998
-  cd $hal
-}
-
-function gapps () {
-  gapps=$(pwd)
-  cd /home/mamutal91/kk
-  ./gapps.sh
-  cd $gapps
 }
 
 function scripts () {

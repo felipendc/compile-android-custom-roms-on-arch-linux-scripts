@@ -1,8 +1,8 @@
 # Add org
-git remote add org https://github.com/mamutal91/teste
+git remote add org ssh://git@github.com/mamutal91/frameworks_base
 
 # Adjust the following variables as necessary
-REMOTE=org
+REMOTE=mamutal91
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 BATCH_SIZE=500
 
