@@ -77,7 +77,7 @@ function c () {
 }
 
 function f () {
-  git clone https://github.com/aosp-forking/${1} -b ten
+  git fetch https://github.com/aosp-forking/${1} ten
 }
 
 function scripts () {
