@@ -76,6 +76,10 @@ function c () {
   git clone https://github.com/LineageOS/android_${1} -b lineage-17.1 ${1} && cd ${1}
 }
 
+function f () {
+  git clone https://github.com/aosp-forking/${1} -b ten
+}
+
 function scripts () {
   scripts=$(pwd)
   rm -rf $HOME/.tmp
