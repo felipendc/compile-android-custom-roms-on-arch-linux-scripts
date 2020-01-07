@@ -64,7 +64,7 @@ function fetch () {
 }
 
 function push () {
-  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/ten --force && cd ..
+  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/ten --force && cd .. && rm -rf ${1}
 #  git push ssh://git@github.com/aosp-forking/${1} HEAD:refs/heads/${1} --force
 }
 
