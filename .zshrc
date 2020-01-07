@@ -41,15 +41,6 @@ function site () {
   cd $pwd
 }
 
-function tree () {
-  pwd=$(pwd)
-  cd /home/mamutal91/aosp
-  rm -rf device/xiaomi
-  git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
-  git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
-  cd $pwd
-}
-
 function up () {
   cp -rf ${1} /var/www/krakenproject.club/building
 }
@@ -59,25 +50,17 @@ function upload () {
 }
 
 function fetch () {
-  echo "lineage-${2}.1"
-  git fetch https://github.com/LineageOS/android_${1} lineage-${2}.1
+  echo "lineage-17.1"
+  git fetch https://github.com/LineageOS/android_${1} lineage-17.1
 }
 
 function push () {
-  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/ten --force && cd .. && rm -rf ${1}
-#  git push ssh://git@github.com/aosp-forking/${1} HEAD:refs/heads/${1} --force
+  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/ten --force
+  git push ssh://git@github.com/aosp-forking/${1} HEAD:refs/heads/ten --force
 }
 
 function p () {
   git cherry-pick ${1}
-}
-
-function c () {
-  git clone https://github.com/LineageOS/android_${1} -b lineage-17.1 ${1} && cd ${1}
-}
-
-function f () {
-  git fetch https://github.com/aosp-forking/${1} ten
 }
 
 function scripts () {
@@ -85,16 +68,8 @@ function scripts () {
   rm -rf $HOME/.tmp
   rm -rf $HOME/.zshrc
   rm -rf $HOME/.apt.sh
-  rm -rf $HOME/kk/merging.sh
-  rm -rf $HOME/kk/mka.sh
-  rm -rf $HOME/kk/hal.sh
-  rm -rf $HOME/kk/gapps.sh
   cd $HOME && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.zshrc
   cd $HOME && rm -rf .apt.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.apt.sh && chmod +x .apt.sh
-  cd $HOME/kk && rm -rf merging.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/merging.sh && chmod +x merging.sh
-  cd $HOME/kk && rm -rf mka.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/mka.sh && chmod +x mka.sh
-  cd $HOME/kk && rm -rf hal.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/hal.sh && chmod +x hal.sh
-  cd $HOME/kk && rm -rf gapps.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/gapps.sh && chmod +x gapps.sh
   cd $scripts
   source $HOME/.zshrc
   clear
