@@ -64,12 +64,16 @@ function fetch () {
 }
 
 function push () {
-  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/${2} --force
+#  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/${2} --force
   git push ssh://git@github.com/aosp-forking/${1} HEAD:refs/heads/${2} --force
 }
 
 function p () {
   git cherry-pick ${1}
+}
+
+function c () {
+  git clone https://github.com/LineageOS/android_${1} -b lineage-17.1 ${1} && cd ${1}
 }
 
 function scripts () {
