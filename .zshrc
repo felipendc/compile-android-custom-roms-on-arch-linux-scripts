@@ -65,7 +65,6 @@ function p () {
 
 function scripts () {
   scripts=$(pwd)
-  rm -rf $HOME/.tmp
   rm -rf $HOME/.zshrc
   rm -rf $HOME/.apt.sh
   cd $HOME && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.zshrc
