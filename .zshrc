@@ -64,8 +64,8 @@ function fetch () {
 }
 
 function push () {
-#  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/${2} --force
-  git push ssh://git@github.com/aosp-forking/${1} HEAD:refs/heads/${2} --force
+#  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/${1} --force && cd ..
+#  git push ssh://git@github.com/aosp-forking/${1} HEAD:refs/heads/${1} --force
 }
 
 function p () {
@@ -74,6 +74,8 @@ function p () {
 
 function c () {
   git clone https://github.com/LineageOS/android_${1} -b lineage-17.1 ${1} && cd ${1}
+  git push ssh://git@github.com/mamutal91/${1} HEAD:refs/heads/ten --force && cd ..
+  rm -rf ${1}
 }
 
 function scripts () {
@@ -92,5 +94,6 @@ function scripts () {
   cd $HOME/kk && rm -rf hal.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/hal.sh && chmod +x hal.sh
   cd $HOME/kk && rm -rf gapps.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/gapps.sh && chmod +x gapps.sh
   cd $scripts
+  source $HOME/.zshrc
   clear
 }
