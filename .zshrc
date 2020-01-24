@@ -41,6 +41,16 @@ function site () {
   cd $pwd
 }
 
+function tree () {
+  rm -rf device/xiaomi/*
+  rm -rf vendor/xiaomi/*
+  rm -rf kernel/xiaomi/*
+  git clone ssh://git@github.com/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
+  git clone ssh://git@github.com/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
+  git clone https://github.com/AOSiP-Devices/proprietary_vendor_xiaomi -b ten vendor/xiaomi
+  git clone https://github.com/AOSiP-Devices/kernel_xiaomi_sdm845 -b ten kernel/xiaomi/sdm845
+}
+
 function up () {
   cp -rf ${1} /var/www/krakenproject.club/building
 }
