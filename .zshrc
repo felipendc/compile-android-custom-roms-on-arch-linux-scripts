@@ -42,9 +42,9 @@ function site () {
 }
 
 function tree () {
-  rm -rf device/xiaomi/*
-  rm -rf vendor/xiaomi/*
-  rm -rf kernel/xiaomi/*
+  sudo rm -rf device/xiaomi/*
+  sudo rm -rf vendor/xiaomi/*
+  sudo rm -rf kernel/xiaomi/*
   git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
   git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
   git clone https://github.com/AOSiP-Devices/proprietary_vendor_xiaomi -b ten vendor/xiaomi
