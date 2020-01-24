@@ -41,20 +41,8 @@ function site () {
   cd $pwd
 }
 
-function c () {
-  git clone https://github.com/LineageOS/android_${1} -b lineage-17.1 ${1} && cd ${1}
-}
-
-function f () {
-  git fetch ssh://git@github.com/aosp-forking/${1} ten
-}
-
 function up () {
   cp -rf ${1} /var/www/krakenproject.club/building
-}
-
-function upload () {
-  scp /home/mamutal91/kk/out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/krakenproject/beryllium
 }
 
 function fetch () {
