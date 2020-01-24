@@ -30,17 +30,6 @@ export KBUILD_BUILD_HOST=MamutBox
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CUSTOM_BUILD_TYPE=OFFICIAL
 
-function site () {
-  pwd=$(pwd)
-  cd /var/www/krakenproject.club
-  sudo rm -rf css js favicon.ico index.html
-  git clone https://github.com/andersonmendess/kraken -b prod
-  cd kraken
-  mv * .. && cd ..
-  rm -rf kraken
-  cd $pwd
-}
-
 function tree () {
   sudo rm -rf device/xiaomi/*
   sudo rm -rf vendor/xiaomi/*
