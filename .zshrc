@@ -25,8 +25,8 @@ export CCACHE_DIR="${HOME}/.ccache"
 export CCACHE_EXEC="$(which ccache)"
 # ccache -M 100G
 
-export KBUILD_BUILD_USER=mamutal91
-export KBUILD_BUILD_HOST=MamutBox
+export KBUILD_BUILD_USER=MaMuT
+export KBUILD_BUILD_HOST=MaMuT
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CUSTOM_BUILD_TYPE=OFFICIAL
 
