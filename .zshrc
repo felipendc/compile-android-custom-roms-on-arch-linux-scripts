@@ -32,15 +32,13 @@ export CUSTOM_BUILD_TYPE=OFFICIAL
 
 function tree () {
   sudo rm -rf device/xiaomi/*
-  sudo rm -rf vendor/xiaomi/*
-  sudo rm -rf kernel/xiaomi/*
   git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten_bkp device/xiaomi/beryllium
   git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten_bkp device/xiaomi/sdm845-common
-  git clone ssh://git@github.com/mamutal91/vendor/xiaomi -b ten vendor/xiaomi
-  git clone github.com/LineageOS/android_kernel_xiaomi_sdm845 -b lineage-17.0 kernel/xiaomi/sdm845
 
-#  git clone https://github.com/AOSiP-Devices/proprietary_vendor_xiaomi -b ten vendor/xiaomi
-#  git clone https://github.com/AOSiP-Devices/kernel_xiaomi_sdm845 -b ten kernel/xiaomi/sdm845
+  rm -rf vendor/xiaomi
+  git clone https://github.com/AOSiP-Devices/proprietary_vendor_xiaomi -b ten vendor/xiaomi
+  rm -rf kernel/xiaomi
+  git clone https://github.com/AOSiP-Devices/kernel_xiaomi_sdm845 -b ten kernel/xiaomi/sdm845
 }
 
 function up () {
