@@ -40,7 +40,6 @@ function tree () {
 
   rm -rf vendor/xiaomi
   git clone https://github.com/AOSiP-Devices/proprietary_vendor_xiaomi -b ten vendor/xiaomi
-
   tree=$(pwd)
   cd vendor/xiaomi
   rm -rf dipper jasmine_sprout mido msm8953-common platina raphael sdm660-common wayne wayne-common whyred
