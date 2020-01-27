@@ -29,12 +29,15 @@ export KBUILD_BUILD_USER=MaMuT
 export KBUILD_BUILD_HOST=MaMuT
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CUSTOM_BUILD_TYPE=OFFICIAL
+export TARGET_GAPPS_ARCH=arm64
 
 function tree () {
   sudo rm -rf device/xiaomi/*
   git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
   git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
+}
 
+function tree_aosip () {
   rm -rf kernel/xiaomi
   git clone https://github.com/AOSiP-Devices/kernel_xiaomi_sdm845 -b ten kernel/xiaomi/sdm845
 
