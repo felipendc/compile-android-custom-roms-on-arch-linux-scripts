@@ -44,10 +44,12 @@ function tree () {
   git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
 }
 
-function tree_aosip () {
+function tree_kernel () {
   rm -rf kernel/xiaomi
   git clone https://github.com/AOSiP-Devices/kernel_xiaomi_sdm845 -b ten kernel/xiaomi/sdm845
+}
 
+function tree_vendor () {
   rm -rf vendor/xiaomi
   git clone https://github.com/AOSiP-Devices/proprietary_vendor_xiaomi -b ten vendor/xiaomi
   tree=$(pwd)
