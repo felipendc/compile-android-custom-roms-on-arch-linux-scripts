@@ -63,7 +63,7 @@ function up () {
 }
 
 function upsf () {
-  scp out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/aosp-forking/beryllium
+  scp ${1} mamutal91@frs.sourceforge.net:/home/frs/project/aosp-forking/beryllium
 }
 
 function fetch () {
