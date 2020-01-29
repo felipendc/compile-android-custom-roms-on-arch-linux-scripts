@@ -62,6 +62,10 @@ function up () {
   cp -rf ${1} /var/www/krakenproject.club/building
 }
 
+function upsf () {
+  scp out/target/product/beryllium/${1} mamutal91@frs.sourceforge.net:/home/frs/project/aosp-forking/beryllium
+}
+
 function fetch () {
   echo "lineage-17.1"
   git fetch https://github.com/LineageOS/android_${1} lineage-17.1
