@@ -30,7 +30,7 @@ export KBUILD_BUILD_HOST=MaMuT
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CUSTOM_BUILD_TYPE=OFFICIAL
 
-# Exports for PixelExperience
+# Exports for PE
 export TARGET_GAPPS_ARCH=arm64
 export TARGET_BOOT_ANIMATION_RES=1080
 
