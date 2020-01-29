@@ -80,8 +80,9 @@ function scripts () {
   scripts=$(pwd)
   rm -rf $HOME/.zshrc
   rm -rf $HOME/.apt.sh
-  cd $HOME && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.zshrc
-  cd $HOME && rm -rf .apt.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/.apt.sh && chmod +x .apt.sh
+  cd $HOME
+  wget https://raw.githubusercontent.com/mamutal91/scripts/master/.zshrc
+  wget https://raw.githubusercontent.com/mamutal91/scripts/master/.apt.sh && chmod +x .apt.sh
   cd $scripts
   source $HOME/.zshrc
   clear
