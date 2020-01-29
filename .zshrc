@@ -39,7 +39,8 @@ function site () {
 }
 
 function tree () {
-  sudo rm -rf device/xiaomi/*
+  rm -rf device/xiaomi/beryllium
+  rm -rf device/xiaomi/sdm845-common
   git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
   git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
 }
