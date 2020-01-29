@@ -34,6 +34,10 @@ export CUSTOM_BUILD_TYPE=OFFICIAL
 export TARGET_GAPPS_ARCH=arm64
 export TARGET_BOOT_ANIMATION_RES=1080
 
+function site () {
+  cd /var/www/krakenproject.club/building
+}
+
 function tree () {
   sudo rm -rf device/xiaomi/*
   git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
