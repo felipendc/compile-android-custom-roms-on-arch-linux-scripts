@@ -1,9 +1,10 @@
 # Add org
+# git remote add gitpush https://github.com/aosp-forking/frameworks_base
 
 # Adjust the following variables as necessary
-REMOTE=aosp-forking
+REMOTE=gitpush
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-BATCH_SIZE=500
+BATCH_SIZE=20000
 
 # check if the branch exists on the remote
 if git show-ref --quiet --verify refs/remotes/$REMOTE/$BRANCH; then
