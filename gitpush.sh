@@ -1,4 +1,4 @@
-# Add org
+# Add remote org/repo
 # git remote add gitpush ssh://git@github.com/aosp-forking/frameworks_base
 
 # Adjust the following variables as necessary
