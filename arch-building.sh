@@ -9,7 +9,8 @@ sudo pacman -S reflector --noconfirm
 sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 function pacman(){
-  sudo pacman -Sy base-devel go git zsh zsh-syntax-highlighting repo wget ccache imagemagick cronie ntp lzip nginx --needed --noconfirm
+  sudo pacman -Sy base-devel go git repo wget ccache imagemagick cronie ntp lzip nginx --needed --noconfirm
+# No need to download these: zsh "zsh-syntax-highlighting" packages for now, because I've already have them install on my VicyosLinux.
 }
 
 function yay-install(){
@@ -78,13 +79,15 @@ function config_system(){
   sudo chown -R $USER:$USER /home/$USER
   chmod +x /home/$USER
 }
-
-function zsh(){
-  rm -rf $HOME/.oh-my-zsh
-  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-  rm -rf .zshrc
-  wget https://raw.githubusercontent.com/mamutal91/buildroid/master/home/.zshrc
-}
+#############################################################################################################
+## No need to download zsh because I've already have my own modified zsh.
+#function zsh(){
+#  rm -rf $HOME/.oh-my-zsh
+#  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+#  rm -rf .zshrc
+#  wget https://raw.githubusercontent.com/mamutal91/buildroid/master/home/.zshrc
+#}
+#############################################################################################################
 
 pacman
 yay-install
