@@ -5,12 +5,23 @@
 
 export TERM=xterm-256color
 
+sudo rm /var/lib/pacman/db.lck
+
 sudo pacman -S reflector --noconfirm
 sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 function pacman(){
   sudo pacman -Sy base-devel go git repo wget ccache imagemagick cronie ntp lzip nginx --needed --noconfirm
 # No need to download these: zsh "zsh-syntax-highlighting" packages for now, because I've already have them install on my VicyosLinux.
+}
+
+function trizen-install(){
+  rm -rf trizen
+  git clone https://aur.archlinux.org/trizen-git.git
+  cd trizen-git
+  makepkg -si --noconfirm
+  cd ..
+  rm -rf trizen-git
 }
 
 function yay-install(){
@@ -22,8 +33,14 @@ function yay-install(){
   rm -rf yay
 }
 
+
+trizen -S lib32-gconf --needed --noconfirm
+trizen -S lib32-js17 --needed --noconfirm
+trizen -S lib32-gcc-libs --needed --noconfirm
+
+
 readonly PACMAN_CLOUD=(
-  lib32-ncurses lib32-libxml2 lib32-gconf lib32-libcroco lib32-libsoup lib32-llvm-libs lib32-readline lib32-js17 lib32-librsvg lib32-mesa lib32-rest lib32-cairo
+  lib32-ncurses lib32-libxml2 lib32-libcroco lib32-libsoup lib32-llvm-libs lib32-readline lib32-librsvg lib32-mesa lib32-rest lib32-cairo
   lib32-glew1.10 lib32-gtk3 lib32-polkit lib32-colord lib32-gtk2 lib32-pango lib32-libdbusmenu-gtk2 lib32-libindicator-gtk2 lib32-libappindicator-gtk2)
 
 readonly AUR_CLOUD=(
