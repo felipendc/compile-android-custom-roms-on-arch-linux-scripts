@@ -13,15 +13,11 @@
 # Form more information, visit: https://git-lfs.github.com/
 ##################################################################################################
 
-export aosp_dir="/home/vicyos/AOSP-FORKING/"
+aosp_dir="$HOME/AOSP-FORKING/"
 
-function opengapps () {
-  pwd_opengapps=$(pwd)
-  cd $aosp_dir/vendor/opengapps/build && git lfs fetch --all && git lfs pull
-  cd $aosp_dir/vendor/opengapps/sources/all && git lfs fetch --all && git lfs pull
-  cd $aosp_dir/vendor/opengapps/sources/arm && git lfs fetch --all && git lfs pull
-  cd $aosp_dir/vendor/opengapps/sources/arm64 && git lfs fetch --all && git lfs pull
-  cd $aosp_dir/vendor/opengapps/sources/x86 && git lfs fetch --all && git lfs pull
-  cd $aosp_dir/vendor/opengapps/sources/x86_64 && git lfs fetch --all && git lfs pull
-  cd $pwd_opengapps
-}
+cd $aosp_dir/vendor/opengapps/build && git lfs fetch --all && git lfs pull
+cd $aosp_dir/vendor/opengapps/sources/all && git lfs fetch --all && git lfs pull
+cd $aosp_dir/vendor/opengapps/sources/arm && git lfs fetch --all && git lfs pull
+cd $aosp_dir/vendor/opengapps/sources/arm64 && git lfs fetch --all && git lfs pull
+cd $aosp_dir/vendor/opengapps/sources/x86 && git lfs fetch --all && git lfs pull
+cd $aosp_dir/vendor/opengapps/sources/x86_64 && git lfs fetch --all && git lfs pull
