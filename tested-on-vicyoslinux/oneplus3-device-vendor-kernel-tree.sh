@@ -17,7 +17,7 @@ git clone https://github.com/felipendc/android_kernel_oneplus_msm8996.git -b lin
 #################### FOR AOSP CUSTOM ROMS  ####################
 ###############################################################
 # . build/envsetup.sh or  source build/envsetup.sh
-# lunch aosp_oneplus3
+# lunch aosp_oneplus3-userdebug
 # make -j$(nproc --all) bacon
 # For detailed logs, use:
 # make -j$(nproc --all) bacon 2>&1 | tee log.txt
