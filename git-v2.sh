@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script was only possible thanks to "Erik Dubois"
+# Website	:	https://www.erikdubois.be
+
+
 # checking if I have the latest files from github
 echo "Checking for newer files online first"
 git pull
