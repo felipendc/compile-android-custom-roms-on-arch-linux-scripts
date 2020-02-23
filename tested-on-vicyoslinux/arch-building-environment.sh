@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script was only possible thanks to "github.com/mamutal91"
+# This script was only possible thanks to Alexandre Rangel "github.com/mamutal91"
 
 # For more information about this script, visit: github.com/felipendc   
 #
