@@ -23,9 +23,10 @@ cd $aosp_dir/vendor/opengapps/sources/arm64 && git lfs fetch --all && git lfs pu
 cd $aosp_dir/vendor/opengapps/sources/x86 && git lfs fetch --all && git lfs pull
 cd $aosp_dir/vendor/opengapps/sources/x86_64 && git lfs fetch --all && git lfs pull
 
-##########################################################################################
-####### MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ########
-##########################################################################################
+###############################################################################################################
+################## MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ##################
+#### DON'T FORGET TO RUN THIS SCRIPT FOR EACH COMPILATION!!! THIS WILL PREVENT "No such file or directory" ####
+###############################################################################################################
 
 echo
 echo "################################################################## "
