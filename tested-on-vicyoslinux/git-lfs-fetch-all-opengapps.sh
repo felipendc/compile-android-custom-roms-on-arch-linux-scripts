@@ -21,3 +21,13 @@ cd $aosp_dir/vendor/opengapps/sources/arm && git lfs fetch --all && git lfs pull
 cd $aosp_dir/vendor/opengapps/sources/arm64 && git lfs fetch --all && git lfs pull
 cd $aosp_dir/vendor/opengapps/sources/x86 && git lfs fetch --all && git lfs pull
 cd $aosp_dir/vendor/opengapps/sources/x86_64 && git lfs fetch --all && git lfs pull
+
+##########################################################################################
+####### MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ########
+##########################################################################################
+
+echo
+echo "################################################################## "
+tput setaf 2;echo "ALL DONE!!!";tput sgr0
+echo "################################################################## "
+echo
