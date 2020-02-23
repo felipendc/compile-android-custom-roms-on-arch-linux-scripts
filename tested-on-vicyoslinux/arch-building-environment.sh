@@ -1,7 +1,12 @@
 #!/bin/bash
-# github.com/mamutal91
+# This script was only possible thanks to "github.com/mamutal91"
 
-# rm -rf arch-building.sh.sh && wget https://raw.githubusercontent.com/mamutal91/scripts/master/arch-building.sh && sudo chmod +x arch-building.sh && ./arch-building.sh
+# For more information about this script, visit: github.com/felipendc   
+#
+# My personal Linux Distribution: VicyosLinux (Based on Arch)
+# GDRIVE: https://drive.google.com/drive/folders/1JyI8O4DhJb9ktIaffiJYu966r9OIUwQI
+# Or, if you will... you can also build it from the source: https://github.com/felipendc/vicyos-build
+
 
 export TERM=xterm-256color
 
