@@ -1,6 +1,7 @@
 #!/bin/bash
 # This script was only possible thanks to Alexandre Rangel "github.com/mamutal91"
 
+# The script below is my modified version of Alexandre Rangel's 
 # My github: github.com/felipendc
 
 ##################################################################################################
