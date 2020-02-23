@@ -42,6 +42,7 @@ function yay-install(){
 trizen -S lib32-gconf --needed --noconfirm
 trizen -S lib32-js17 --needed --noconfirm
 trizen -S lib32-gcc-libs --needed --noconfirm
+trizen -S git-lfs --needed --noconfirm
 
 
 readonly PACMAN_CLOUD=(
