@@ -1,8 +1,9 @@
 # This script was only possible thanks to felipendc "github.com/felipendc"
-
 # For more information about this script, visit: github.com/felipendc   
-#
+
+
 # My personal Linux Distribution: VicyosLinux (Based on Arch)
+
 # GDRIVE: https://drive.google.com/drive/folders/1JyI8O4DhJb9ktIaffiJYu966r9OIUwQI
 # Or, if you will... you can also build it from the source: https://github.com/felipendc/vicyos-build
 
