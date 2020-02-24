@@ -7,12 +7,12 @@
 ###############################################################################################################
 
 
-
 export aosp_dir="$HOME/AOSP-FORKING"
 
 
 function sync () {
-    cd $aosp_dir/repo sync --force-sync && opengapps
+    cd $aosp_dir
+    repo sync --force-sync && opengapps
 }
 
 function lfs () {
@@ -25,5 +25,10 @@ function lfs () {
 }
 
 function compile () {
-    cd $aosp_dir/make clobber && make clean && . build/envsetup.sh && lunch aosp_oneplus3-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
+    cd $aosp_dir
+    make clobber && make clean && . build/envsetup.sh && lunch aosp_oneplus3-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
 }
+
+sync
+lfs
+compile
