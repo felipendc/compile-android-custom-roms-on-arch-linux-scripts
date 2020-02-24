@@ -24,6 +24,6 @@ function lfs () {
     cd $aosp_dir/vendor/opengapps/sources/x86_64 && git lfs fetch --all && git lfs pull
 }
 
-function lfs () {
+function compile () {
     cd $aosp_dir/make clobber && make clean && . build/envsetup.sh && lunch aosp_oneplus3-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
 }
