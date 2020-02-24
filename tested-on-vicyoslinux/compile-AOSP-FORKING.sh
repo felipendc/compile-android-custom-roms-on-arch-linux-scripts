@@ -2,6 +2,11 @@
 
 # This script was only possible thanks to Felipe Ndc "github.com/felipendc" 
 
+###############################################################################################################
+################## MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ##################
+###############################################################################################################
+
+
 
 aosp_dir="$HOME/AOSP-FORKING"
 
