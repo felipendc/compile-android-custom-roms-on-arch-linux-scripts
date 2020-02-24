@@ -12,7 +12,7 @@ export aosp_dir="$HOME/AOSP-FORKING"
 function sync () {
     cd $aosp_dir
     git lfs install
-    repo sync --force-sync && opengapps
+    repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync && opengapps
 }
 
 function lfs () {
