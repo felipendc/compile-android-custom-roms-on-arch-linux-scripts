@@ -14,7 +14,7 @@
 # Form more information, visit: https://git-lfs.github.com/
 ##################################################################################################
 
-aosp_dir="$HOME/AOSP-FORKING/"
+aosp_dir="$HOME/AOSP-FORKING"
 
 cd $aosp_dir/vendor/opengapps/build && git lfs fetch --all && git lfs pull
 cd $aosp_dir/vendor/opengapps/sources/all && git lfs fetch --all && git lfs pull
