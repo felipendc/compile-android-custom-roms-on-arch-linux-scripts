@@ -12,6 +12,7 @@ export aosp_dir="$HOME/AOSP-FORKING"
 # Optional repo sync --force-sync && opengapps
 function sync () {
     cd $aosp_dir
+    git lfs install
     repo sync && opengapps
 }
 
