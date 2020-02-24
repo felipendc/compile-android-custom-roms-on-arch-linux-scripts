@@ -38,15 +38,18 @@ function yay-install(){
   rm -rf yay
 }
 
+function trizen_aur(){
 
-trizen -S lib32-gconf --needed --noconfirm
-trizen -S lib32-js17 --needed --noconfirm
-trizen -S lib32-gcc-libs --needed --noconfirm
-trizen -S git-lfs --needed --noconfirm
+ trizen -S lib32-gconf --needed --noconfirm
+ trizen -S lib32-js17 --needed --noconfirm
+ trizen -S lib32-gcc-libs --needed --noconfirm
+ trizen -S git-lfs --needed --noconfirm
+}
 
-# Run it for each time you compile a new rom!
-git lfs install
-
+function lfs_install(){
+ # Run it for each time you compile a new rom!
+ git lfs install
+}
 
 readonly PACMAN_CLOUD=(
   lib32-ncurses lib32-libxml2 lib32-libcroco lib32-libsoup lib32-llvm-libs lib32-readline lib32-librsvg lib32-mesa lib32-rest lib32-cairo
@@ -116,7 +119,10 @@ function config_system(){
 #############################################################################################################
 
 pacman
+trizen-install
 yay-install
+trizen_aur
+lfs_install
 pacman-cloud
 aur-cloud
 bin
@@ -124,6 +130,4 @@ symlinksdk
 java
 hour
 config_system
-zsh
-
 #rm -rf android*
