@@ -9,10 +9,10 @@
 
 export aosp_dir="$HOME/AOSP-FORKING"
 
-
+# Optional repo sync --force-sync && opengapps
 function sync () {
     cd $aosp_dir
-    repo sync --force-sync && opengapps
+    repo sync && opengapps
 }
 
 function lfs () {
