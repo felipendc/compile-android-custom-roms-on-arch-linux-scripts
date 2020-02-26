@@ -17,6 +17,8 @@ sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 function pacman(){
   sudo pacman -Sy base-devel go git repo wget ccache imagemagick cronie ntp lzip nginx --needed --noconfirm
+# ttf-droid (setup: Add ttf-droid for fix java errors)
+
 # No need to download these: zsh "zsh-syntax-highlighting" packages for now, because I've already have them install on my VicyosLinux.
 }
 
