@@ -25,7 +25,7 @@ function sync () {
     sudo rm -r kernel/xiaomi/sdm845/.git
 
     sudo rm -r vendor/xiaomi/beryllium*
-    git clone https://github.com/felipendc/proprietary_vendor_xiaomi_beryllium -b ten vendor/xiaomi/beryllium
+    git clone https://github.com/felipendc/proprietary_vendor_xiaomi -b ten vendor/xiaomi
     sudo rm -r vendor/xiaomi/beryllium/.git
     
     repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync && opengapps

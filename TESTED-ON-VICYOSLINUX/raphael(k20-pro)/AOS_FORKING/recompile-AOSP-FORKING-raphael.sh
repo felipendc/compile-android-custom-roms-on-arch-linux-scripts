@@ -7,12 +7,10 @@
 ################## MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ##################
 ###############################################################################################################
 
-
 export aosp_dir="$HOME/AOSP-FORKING"
 
 function sync () {
     cd $aosp_dir
-    export ALLOW_MISSING_DEPENDENCIES=true
     git lfs install
     repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync && opengapps
 }
