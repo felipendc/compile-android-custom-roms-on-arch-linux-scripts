@@ -9,10 +9,13 @@
 
 export aosp_dir="$HOME/AOSP-FORKING"
 
-
+function sync () {
+    cd $aosp_dir
+    git lfs install
+    repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync && opengapps
+}
 
 function lfs () {
-    git lfs install
     cd $aosp_dir/vendor/opengapps/build && git lfs fetch --all && git lfs pull
     cd $aosp_dir/vendor/opengapps/sources/all && git lfs fetch --all && git lfs pull
     cd $aosp_dir/vendor/opengapps/sources/arm && git lfs fetch --all && git lfs pull
@@ -26,5 +29,6 @@ function compile () {
     make clobber && make clean && . build/envsetup.sh && lunch aosp_beryllium-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
 }
 
+sync
 lfs
 compile
