@@ -6,7 +6,6 @@
 ###############################################################################################################
 ################## MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ##################
 ###############################################################################################################
-https://github.com/felipendc/vendor_xiaomi_raphael-1
 
 export aosp_dir="$HOME/AOSP-FORKING"
 
