@@ -13,7 +13,7 @@ function sync () {
     cd $aosp_dir
     git lfs install
     sudo rm -r device/oneplus/oneplus3*
-    git clone https://github.com/felipendc/android_device_oneplus_oneplus3.git -b lineage-17.1 device/oneplus/oneplus3
+    git clone https://github.com/felipendc/aosp_device_oneplus_oneplus3 -b lineage-17.1 device/oneplus/oneplus3
     sudo rm -r device/oneplus/oneplus3/.git
 
     sudo rm -r device/oppo/common*
