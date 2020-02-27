@@ -1,29 +1,32 @@
-#!/bin/bash
+#!bin/bash
 
-# github.com/TingyiChen
-# github.com/felipendc
+# For more information about this script, visit: github.com/felipendc   
 
 ###############################################################################################################
 ################## MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ##################
 ###############################################################################################################
+
 
 export aosp_dir="$HOME/AOSP-FORKING"
 
 function sync () {
     cd $aosp_dir
     git lfs install
-    sudo rm -r device/xiaomi/raphael*
-    git clone https://github.com/felipendc/aosp_device_xiaomi_raphael -b lineage-17.1 device/xiaomi/raphael
-    sudo rm -r device/xiaomi/raphael/.git
+    sudo rm -r device/oneplus/oneplus3*
+    git clone https://github.com/felipendc/android_device_oneplus_oneplus3.git -b lineage-17.1 device/oneplus/oneplus3
+    sudo rm -r device/oneplus/oneplus3/.git
 
-    sudo rm -r vendor/xiaomi/raphael*
-    git clone https://github.com/felipendc/vendor_xiaomi_raphael-1 -b ten vendor/xiaomi/raphael
-    sudo rm -r vendor/xiaomi/raphael/.git
+    sudo rm -r device/oppo/common*
+    git clone https://github.com/felipendc/android_device_oppo_common.git -b lineage-17.1 device/oppo/common
+    sudo rm -r device/oppo/common/.git
 
-    sudo rm -r kernel/xiaomi/sm8150*
-    git clone https://github.com/felipendc/kernel_xiaomi_sm8150 -b lineage-17.1 kernel/xiaomi/sm8150
-    sudo rm -r kernel/xiaomi/sm8150/.git
-    repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync && opengapps
+    sudo rm -r vendor/oneplus*
+    git clone https://github.com/felipendc/proprietary_vendor_oneplus.git -b lineage-17.1 vendor/oneplus
+    sudo rm -r vendor/oneplus/.git
+
+    sudo rm -r kernel/oneplus/msm8996*
+    git clone https://github.com/felipendc/android_kernel_oneplus_msm8996.git -b lineage-17.1 kernel/oneplus/msm8996
+    sudo rm -r kernel/oneplus/msm8996/.git
 }
 
 function lfs () {
@@ -37,7 +40,7 @@ function lfs () {
 
 function compile () {
     cd $aosp_dir
-    make clobber && make clean && . build/envsetup.sh && lunch aosp_raphael-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
+    make clobber && make clean && . build/envsetup.sh && lunch aosp_oneplus3-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
 }
 
 sync
