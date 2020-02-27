@@ -27,7 +27,7 @@ function lfs () {
 
 function compile () {
     cd $aosp_dir
-    make clobber && make clean && . build/envsetup.sh && lunch aosp_beryllium-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
+    make clobber && make clean && . build/envsetup.sh && lunch aosp_raphael-userdebug && make -j$(nproc --all) bacon 2>&1 | tee log.txt
 }
 
 sync
