@@ -22,9 +22,6 @@ function sync () {
     sudo rm -r kernel/xiaomi/sm8150*
     git clone https://github.com/felipendc/kernel_xiaomi_sm8150 -b lineage-17.1 kernel/xiaomi/sm8150
     sudo rm -r kernel/xiaomi/sm8150/.git
-    sudo rm -r packages/resources/devicesettings*
-    git clone https://github.com/felipendc/android_device_xiaomi_sdm845-common -b lineage-17.1 packages/resources/devicesettings
-    sudo rm -r packages/resources/devicesettings/.git
     repo sync -c -j$(nproc --all) --no-clone-bundle --no-tags --force-sync && opengapps
 }
 
