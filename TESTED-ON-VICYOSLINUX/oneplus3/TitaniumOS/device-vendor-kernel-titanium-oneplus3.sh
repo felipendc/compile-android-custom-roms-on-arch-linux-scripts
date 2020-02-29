@@ -6,6 +6,8 @@
 ################## MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ##################
 ###############################################################################################################
 
+# ConfigPanel removed, for now.
+
 export titanium="$HOME/titanium"
 
 function sync () {
