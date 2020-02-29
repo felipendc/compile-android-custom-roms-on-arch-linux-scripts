@@ -19,7 +19,7 @@ function sync () {
     sudo rm -r device/oneplus/oneplus3/.git
 
     sudo rm -r device/oppo/common*
-    git clone https://github.com/felipendc/android_device_oppo_common.git -b lineage-17.1 device/oppo/common
+    git clone https://github.com/felipendc/titanium_device_oppo_common -b lineage-17.1 device/oppo/common
     sudo rm -r device/oppo/common/.git
 
     sudo rm -r vendor/oneplus*
