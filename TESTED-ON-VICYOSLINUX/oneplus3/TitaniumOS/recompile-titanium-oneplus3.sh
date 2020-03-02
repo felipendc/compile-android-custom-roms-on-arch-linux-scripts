@@ -12,7 +12,7 @@ export titanium="$HOME/titanium"
 function sync () {
     cd $titanium
 
-    repo sync -j4 --force-sync -c --no-clone-bundle --no-tags --optimized-fetch --prune
+    repo sync -j$(nproc --all) --force-sync -c --no-clone-bundle --no-tags --optimized-fetch --prune
 }
 
 function compile () {
