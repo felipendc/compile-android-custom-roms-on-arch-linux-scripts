@@ -41,7 +41,7 @@ function sync () {
 
 function compile () {
     cd $titanium
-    make clobber && make clean && . build/envsetup.sh && lunch titanium_oneplus3-userdebug && make titanium 2>&1 | tee log.txt
+    make clobber && make clean && . build/envsetup.sh && lunch titanium_oneplus3-userdebug && make -j$(nproc --all) titanium 2>&1 | tee log.txt
 }
 
 sync
