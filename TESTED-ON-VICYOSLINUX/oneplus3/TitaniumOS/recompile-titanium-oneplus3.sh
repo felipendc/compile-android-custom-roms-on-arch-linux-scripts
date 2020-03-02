@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Felipe Ndc "github.com/felipendc" 
+# Rom source code: https://github.com/TitaniumOS/manifest
 
 ###############################################################################################################
 ################## MAKE SURE TO MAKE THIS FILE EXECUTABLE TO PREVENT ANY PERMISSIONS ERRORS  ##################
