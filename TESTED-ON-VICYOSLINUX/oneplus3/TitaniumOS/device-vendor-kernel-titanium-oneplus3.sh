@@ -34,7 +34,7 @@ function sync () {
     sudo rm -r packages/resources/OneplusGestures/.git
 
     sudo rm -r kernel/oneplus/msm8996*
-    git clone https://github.com/Gaurav241/kernel_oneplus_msm8996.git -b Android-10.0 kernel/oneplus/msm8996
+    git clone https://github.com/ajithzres/android_kernel_oneplus_msm8996 -b 10 kernel/oneplus/msm8996
     sudo rm -r kernel/oneplus/msm8996/.git
 
     repo sync -j$(nproc --all) --force-sync -c --no-clone-bundle --no-tags --optimized-fetch --prune

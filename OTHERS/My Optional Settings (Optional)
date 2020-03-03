@@ -16,7 +16,7 @@ export CCACHE_EXEC="$(which ccache)"
 # ccache -M 150G
 
 export KBUILD_BUILD_USER=Vicyos
-export KBUILD_BUILD_HOST=Vicyoss
+export KBUILD_BUILD_HOST=Vicyos
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CUSTOM_BUILD_TYPE=OFFICIAL
 
