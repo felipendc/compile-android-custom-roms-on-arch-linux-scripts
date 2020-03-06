@@ -78,7 +78,11 @@ function push () {
 }
 
 function pushv () {
-  git push ssh://git@gitlab.com/viperos_wip/android_${1} HEAD:refs/heads/${2} --force
+  git push ssh://git@github.com/ViperOS-WIP/android_${1} HEAD:refs/heads/${2} --force
+}
+
+function c () {
+  git clone ssh://git@github.com/ViperOS-WIP/android_${1} -b ten
 }
 
 function p () {
