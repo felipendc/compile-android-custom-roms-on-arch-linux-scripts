@@ -81,6 +81,10 @@ function pushv () {
   git push ssh://git@github.com/ViperOS-WIP/android_${1} HEAD:refs/heads/${2} --force
 }
 
+function aosp () {
+  cd $HOME/aosp
+}
+
 function c () {
   git clone ssh://git@github.com/ViperOS-WIP/android_${1} -b ten
 }
