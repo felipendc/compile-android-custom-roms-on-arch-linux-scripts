@@ -8,6 +8,9 @@ plugins=(git archlinux extract web-search)
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+export branch="ten"
+export los="lineage-17.1"
+
 export TERM="xterm-256color"
 export EDITOR="nano"
 export LANG="pt_BR.UTF-8"
@@ -41,8 +44,8 @@ function site () {
 function tree () {
   rm -rf device/xiaomi/beryllium
   rm -rf device/xiaomi/sdm845-common
-  git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b ten device/xiaomi/beryllium
-  git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b ten device/xiaomi/sdm845-common
+  git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b $branch device/xiaomi/beryllium
+  git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b $branch device/xiaomi/sdm845-common
 }
 
 function tree_kernel () {
@@ -68,8 +71,8 @@ function upsf () {
 }
 
 function fetch () {
-  echo "lineage-17.1"
-  git fetch https://github.com/LineageOS/android_${1} lineage-17.1
+  echo "$los"
+  git fetch https://github.com/LineageOS/android_${1} $los
 }
 
 function push () {
@@ -86,7 +89,7 @@ function aosp () {
 }
 
 function c () {
-  git clone ssh://git@github.com/ViperOS-WIP/android_${1} -b ten
+  git clone ssh://git@github.com/ViperOS-WIP/android_${1} -b $branch
 }
 
 function p () {
