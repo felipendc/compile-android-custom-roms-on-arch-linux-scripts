@@ -48,6 +48,13 @@ function tree () {
   git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b $branch device/xiaomi/sdm845-common
 }
 
+function tree_pull () {
+  cd $HOME/aosp/device/xiaomi/beryllium
+  git pull --rebase https://github.com/AOSiP-Devices/device_xiaomi_beryllium -t ten && git rebase && git push
+  cd $HOME/aosp/xiaomi/sdm845-common
+  git pull --rebase https://github.com/AOSiP-Devices/device_xiaomi_sdm845-common -t ten && git rebase && git push
+}
+
 function tree_kernel () {
   rm -rf kernel/xiaomi
   git clone https://github.com/AOSiP-Devices/kernel_xiaomi_sdm845 -b ten kernel/xiaomi/sdm845
