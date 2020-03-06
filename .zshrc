@@ -49,10 +49,16 @@ function tree () {
 }
 
 function tree_pull () {
-  cd $HOME/aosp/device/xiaomi/beryllium
+  pull=$(pwd)
+  cd $HOME
+  rm -rf device_xiaomi_beryllium device_xiaomi_sdm845-common
+  git clone ssh://git@github.com/mamutal91/device_xiaomi_beryllium -b $branch
+  git clone ssh://git@github.com/mamutal91/device_xiaomi_sdm845-common -b $branch
+  cd device_xiaomi_beryllium
   git pull --rebase https://github.com/AOSiP-Devices/device_xiaomi_beryllium -t ten && git rebase && git push
-  cd $HOME/aosp/xiaomi/sdm845-common
+  cd device_xiaomi_sdm845-common
   git pull --rebase https://github.com/AOSiP-Devices/device_xiaomi_sdm845-common -t ten && git rebase && git push
+  cd $pull
 }
 
 function tree_kernel () {
