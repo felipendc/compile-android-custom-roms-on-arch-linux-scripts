@@ -55,7 +55,7 @@ function lfs_install(){
 
 readonly PACMAN_CLOUD=(
   lib32-ncurses lib32-libxml2 lib32-libcroco lib32-libsoup lib32-llvm-libs lib32-readline lib32-librsvg lib32-mesa lib32-rest lib32-cairo
-  lib32-glew1.10 lib32-gtk3 lib32-polkit lib32-colord lib32-gtk2 lib32-pango lib32-libdbusmenu-gtk2 lib32-libindicator-gtk2 lib32-libappindicator-gtk2)
+  lib32-glew1.10 lib32-gtk3 lib32-polkit lib32-colord lib32-gtk2 lib32-pango lib32-libdbusmenu-gtk2 lib32-libindicator-gtk2 lib32-libappindicator-gtk2 maven)
 
 readonly AUR_CLOUD=(
   gnupg flex bison gperf sdl wxgtk squashfs-tools curl ncurses zlib schedtool perl-switch zip unzip libxslt python2-virtualenv bc gcc-multilib lib32-zlib
