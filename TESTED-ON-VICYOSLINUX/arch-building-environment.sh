@@ -59,7 +59,7 @@ readonly PACMAN_CLOUD=(
 
 readonly AUR_CLOUD=(
   gnupg flex bison gperf sdl wxgtk squashfs-tools curl ncurses zlib schedtool perl-switch zip unzip libxslt python2-virtualenv bc gcc-multilib lib32-zlib
-  rsync lib32-ncurses5-compat-libs lib32-readline make pngcrush pngquant)
+  rsync lib32-ncurses5-compat-libs ncurses5-compat-libs lib32-readline make pngcrush pngquant)
 
 function pacman-cloud(){
   for i in "${PACMAN_CLOUD[@]}"; do
